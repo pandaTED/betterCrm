@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="cn.panda.bettercrm.domain">
+
+    <class name="Customer" table="bettercrm_customer">
+        <id name="id">
+            <generator class="native"/> 
+        </id>
+        
+        <property name="name"></property>
+        <property name="gender"></property>
+        <property name="age"></property>
+        <property name="birthday"></property>
+        <property name="companyPhone"></property>
+        <property name="cellphone"></property>
+        <property name="email"></property>
+        <property name="status"></property>
+
+        <!-- 与User的多对一关系一 -->
+        <many-to-one name="user" class="User" column="userId"></many-to-one>
+
+        <!-- 与Tracking的一对多关系 -->
+        <set name="trackings" cascade="delete">
+        	<key column="customerId"></key>
+        	<one-to-many class="Tracking"></one-to-many>
+        </set>
+        
+	</class>
+
+</hibernate-mapping>
+
+
+

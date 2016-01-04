@@ -1,0 +1,374 @@
+note
+2015年12月22日12:35:32
+	//todo创建用户实体
+	//todo创建用户数据库表
+	 	* Long id;					//id
+ 		* String name;				//姓名
+ 		* String loginName;		//登录名
+ 		* String password;			//密码
+	 	* String email;			//电子邮件
+		* Date registerDate; 		//注册日期
+		
+		CREATE TABLE crm_user(
+			user_id VARCHAR(40) primary key NOT NULL,
+ 		 	user_name VARCHAR(40) NOT NULL,
+ 		 	user_loginName VARCHAR(40) NOT NULL,
+ 		 	user_password VARCHAR(40) NOT NULL,
+	 		user_email VARCHAR(40) NOT NULL,
+		 	user_registerDate DATETIME
+		);
+		
+		CREATE TABLE crm_customer(
+		customer_id VARCHAR(40) primary key NOT NULL,
+		customer_name VARCHAR(40) NOT NULL,
+		customer_gender VARCHAR(4) NOT NULL,
+		customer_birthday DATE,
+		customer_cellphone VARCHAR(20) NOT NULL,
+		customer_email VARCHAR(40),
+		customer_type VARCHAR(100) NOT NULL,
+		customer_description VARCHAR(255),
+		customer_user_id VARCHAR(40),
+		constraint crm_user_id_FK foreign key(customer_user_id) references crm_user(user_id)
+		);
+		
+	//todo创建用户dao
+	//todo创建用户注册service
+	//todo创建用户登录service
+	//todo创建用户注册页面
+	//todo创建用户登录页面
+	//todo创建用户注册servlet
+	//todo创建用户登录servlet
+
+****以上全部完成****
+	控制页面的自动跳转
+	
+	<script type="text/javascript">  
+    var start = 5;  
+    var step = -1;  
+    function count() {  
+        document.getElementById("div1").innerHTML = "页面将在" + start+ "秒后返回登录页面...";  
+        start += step;  
+        if (start <= 0) {  
+            start = 5;  
+            //alert(start);  
+            window.location = "index.jsp";//重定位  
+        }  
+        setTimeout("count()", 1000);  
+    }  
+    window.onload = count;  
+	</script> 
+	
+	
+	
+	     <div class="myDiv">  
+    <p> ${register_null}
+   		${register_success}
+    	${register_unkonw}</p>  
+        <div id="div1"></div>  
+******************
+
+	<a href="${pageContext.request.contextPath}/servlet/AddCustomerServlet"
+		target="main">添加客户</a>
+	<a
+		href="${pageContext.request.contextPath}/servlet/ListCustomerServlet"
+		target="main">查看客户</a>
+		
+*******************************	
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+<title>添加用户的视图</title>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath }/js/ShowCalendar.js"></script>
+<script type="text/javascript">
+	function makepre() {
+		var pres = document.getElementsByName("pre");
+		var preference = "";
+		for (var i = 0; i < pres.length; i++) {
+			var input = pres[i];
+			if (input.checked == true) {
+				preference = preference + input.value + ",";
+			}
+		}
+ 		preference=preference.substr(0,preference.length-1);
+ 		
+ 		var form = document.getElementById("form");
+ 		var input =document.createElement("input");
+ 		input.type="hidden";
+ 		input.name="preference";
+ 		input.value=preference;
+ 		form.appendChild(input);
+ 		return true;
+	}
+</script>
+</head>
+
+<body>
+	<br />
+
+	<form id="form"
+		action="${pageContext.request.contextPath}/servlet/AddCustomerServlet"
+		method="post" onsubmit="return makepre()">
+		<table border="1" width="50%" align="center">
+			<tr>
+				<td>客户姓名</td>
+				<td><input type="text" name="name" /></td>
+			</tr>
+			<tr>
+				<td>客户性别</td>
+				<td><c:forEach var="gender" items="${genders}">
+						<input type="radio" name="gender" value="${gender}">${gender}
+			</c:forEach></td>
+			</tr>
+			<tr>
+				<td>客户生日</td>
+				<td><input type="text" name="birthday"
+					onClick="showCalendar(this.id)" id="birthday"></td>
+			</tr>
+			<tr>
+				<td>客户手机</td>
+				<td><input type="text" name="cellphone" /></td>
+			</tr>
+			<tr>
+				<td>电子邮箱</td>
+				<td><input type="text" name="email" /></td>
+			</tr>
+			<tr>
+				<td>客户爱好</td>
+				<td><c:forEach var="p" items="${preferences}">
+						<input type="checkbox" name="pre" value="${p}"> ${p}
+			</c:forEach></td>
+			</tr>
+			<tr>
+				<td>客户类别</td>
+				<td><c:forEach var="type" items="${types}">
+						<input type="radio" name="type" value="${type}"> ${type}
+			</c:forEach></td>
+			</tr>
+			<tr>
+				<td>客户备注</td>
+				<td><textarea rows="5" cols="60" name="description"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td><input type="reset" value="重置" /></td>
+				<td><input type="submit" value="添加客户" /></td>
+			</tr>
+		</table>
+	</form>
+
+</body>
+</html>
+*****************************************
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="/panda" prefix="panda"%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>列出所有客户</title>
+<style type="text/css">
+.even {
+	background-color: #FFFF00
+}
+
+.odd {
+	background-color: #FFCCFF
+}
+
+tr:hover {
+	background-color: #FF99FF
+}
+</style>
+</head>
+
+<body style="text-align: center;">
+	<table frame="border" width="85%" align="center">
+		<tr>
+			<td>客户姓名</td>
+			<td>客户性别</td>
+			<td>生日</td>
+			<td>手机</td>
+			<td>电子邮箱</td>
+			<td>类型</td>
+			<td>描述</td>
+			<td>操作</td>
+		</tr>
+		<c:forEach var="c" items="${requestScope.pageBean.customerList}"
+			varStatus="status">
+			<tr class="${status.count%2==0?'even':'odd'}">
+				<td>${c.name }</td>
+				<td>${c.gender }</td>
+				<td>${c.birthday }</td>
+				<td>${c.cellphone }</td>
+				<td>${c.email }</td>
+				<td>${c.type }</td>
+				<td>${panda:sub(c.description)}</td>
+				<td><a
+					href="${pageContext.request.contextPath}/servlet/UpdateCustomer?id=${c.id}">修改</a>
+					<a href="javascript:void(0)" onclick="delcustomer('${c.id}')">删除</a>
+				</td>
+			</tr>
+		</c:forEach>
+	</table>
+	<br />
+
+	<script type="text/javascript">
+	function gotopage(currentPage) {
+		var pagess = document.getElementById("pagesize").value;
+		window.location.href ='${pageContext.request.contextPath}/servlet/ListCustomerServlet?currentPage='+currentPage+'&itemPerPageNum='+pagess ;	
+	}
+	
+	function chagepagesize(itemPerPageNum){
+		
+		window.location.href ='${pageContext.request.contextPath}/servlet/ListCustomerServlet?itemPerPageNum='+itemPerPageNum;
+		
+	} 
+	
+	function delcustomer(id) {
+		if(window.confirm("你确定要删除该项数据吗？")){	
+			window.location.href ='${pageContext.request.contextPath}/servlet/DeleteCustomer?id='+id;
+		}
+	}
+	
+	
+	
+	</script>
+
+	总计 [${pageBean.itemNum}]条数据， 每页显示
+	<input type="text" id="pagesize" style="width: 20px;"
+		value=${pageBean.itemPerPageNum } onchange="chagepagesize(this.value)">
+	条 ， 共[${pageBean.pageNum}]页， 当前第[${pageBean.currentPage}]页 ，
+	<a href="javascript:void(0)"
+		onclick="gotopage(${pageBean.previousPage})">上一页</a>
+	<c:forEach var="pb" items="${pageBean.pagebar}">
+		<c:if test="${pb == pageBean.currentPage}">
+			<font color="red"> ${pb} </font>
+		</c:if>
+		<c:if test="${pb != pageBean.currentPage}">
+			<a href="javascript:void(0)" onclick="gotopage(${pb})"> ${pb} </a>
+		</c:if>
+
+	</c:forEach>
+	<a href="javascript:void(0)" onclick="gotopage(${pageBean.nextPage})">下一页</a>
+
+	跳转到第
+	<input type="text" style="width: 20px;" id="gopage">页
+	<input type="button" value="go"
+		onclick="gotopage(document.getElementById('gopage').value)" />
+
+</body>
+</html>
+******************************************
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>修改客户信息</title>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/js/ShowCalendar.js"></script>
+<script type="text/javascript">
+
+	function makepre() {
+		var pres = document.getElementsByName("pre");
+		var preference = "";
+		for (var i = 0; i < pres.length; i++) {
+			var input = pres[i];
+			if (input.checked == true) {
+				preference = preference + input.value + ",";
+			}
+		}
+ 		preference=preference.substr(0,preference.length-1);
+ 		
+ 		var form = document.getElementById("form");
+ 		var input =document.createElement("input");
+ 		input.type="hidden";
+ 		input.name="preference";
+ 		input.value=preference;
+ 		form.appendChild(input);
+ 		return true;
+	}
+	
+</script>
+</head>
+<body>
+	<form id="form"
+		action="${pageContext.request.contextPath}/servlet/UpdateCustomer"
+		method="post" onsubmit="return makepre()">
+
+		<table border="1" width="50%" align="center">
+
+			<input type="hidden" name="id" value="${customer.id }">
+
+			<tr>
+
+				<td>客户姓名</td>
+				<td><input type="text" name="name" value="${customer.name} " /></td>
+			</tr>
+			<tr>
+				<td>客户性别</td>
+				<td><c:forEach var="gender" items="${genders}">
+						<input type="radio" name="gender" value="${gender}"
+							${customer.gender==gender?'checked':'' }> ${gender }				
+				</c:forEach></td>
+			</tr>
+			<tr>
+				<td>客户生日</td>
+				<td><input type="text" name="birthday"
+					onClick="showCalendar(this.id)" id="birthday"
+					value="${customer.birthday}"></td>
+			</tr>
+			<tr>
+				<td>客户手机</td>
+				<td><input type="text" name="cellphone"
+					value="${customer.cellphone} " /></td>
+			</tr>
+			<tr>
+				<td>电子邮箱</td>
+				<td><input type="text" name="email" value="${customer.email}" /></td>
+			</tr>
+			<tr>
+				<td>客户爱好</td>
+				<td><c:forEach var="p" items="${preferences}">
+						<input type="checkbox" name="pre" value="${p}"
+							${fn:contains(customer.preference,p)?'checked':''}>${p }
+				</c:forEach></td>
+			</tr>
+			<tr>
+				<td>客户类别</td>
+				<td><c:forEach var="type" items="${types}">
+						<input type="radio" name="type" value="${type }"
+							${customer.type==type?'checked':'' }>${type }
+				</c:forEach></td>
+			</tr>
+			<tr>
+				<td>客户备注</td>
+				<td><textarea rows="5" cols="60" name="description"> ${customer.description}
+			</textarea></td>
+			</tr>
+			<tr>
+				<td><input type="reset" value="重置" /></td>
+				<td><input type="submit" value="修改客户" /></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
+
+
+**************************************
+
+
+		
+		
