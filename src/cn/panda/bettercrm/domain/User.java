@@ -23,7 +23,7 @@ public class User {
 		private String loginName;		//登录名
 		private String password;			//密码
 		private String email;			//电子邮件
-		private Date registerDate; 		//注册日期
+		private Date registerDate = new Date(); 		//注册日期
 		private Set<Customer> customers = new HashSet<Customer>();
 		
 		public Long getId() {

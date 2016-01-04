@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 public class CharacterEncodingFilter implements Filter {
 
-	
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
 			throws IOException, ServletException {
 		// TODO Auto-generated method stub
