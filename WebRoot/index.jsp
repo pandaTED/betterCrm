@@ -10,6 +10,11 @@
 	<s:a action="userAction_loginUI" >用户登录</s:a>
 	<br>
 	<s:a action="userAction_registerUI" >用户注册</s:a>
+	<br>
+	<s:a action="">保存客户</s:a>
+	<br>
+	<s:a action="">列出所有客户</s:a>
+	<br>
 
 </body>
 </html>

@@ -33,10 +33,10 @@
 		<!-- 默认的动作是转发 -->
 		<result name="loginUI" >/WEB-INF/jsp/user/login.jsp</result>
 		<result name="registerUI" >/WEB-INF/jsp/user/register.jsp</result>
-		<result name="login_sucess" >/WEB-INF/jsp/user/sucess.jsp</result>
-		<result name="login_fail" >/WEB-INF/jsp/user/fail.jsp</result>
-		<result name="register_sucess" >/WEB-INF/jsp/user/sucess.jsp</result>
-		<result name="register_fail" >/WEB-INF/jsp/user/fail.jsp</result>
+		<result name="login_sucess" >/WEB-INF/jsp/message/sucess.jsp</result>
+		<result name="login_fail" >/WEB-INF/jsp/message/fail.jsp</result>
+		<result name="register_sucess" >/WEB-INF/jsp/message/sucess.jsp</result>
+		<result name="register_fail" >/WEB-INF/jsp/message/fail.jsp</result>
 	</action>
 	
 	</package>
