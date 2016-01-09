@@ -74,7 +74,7 @@ public class UserDaoImpl implements UserDao{
 	public User findByLName(String loginName) {
 		
 		return (User) getSession().createCriteria(User.class)
-				.add(Restrictions.eq(loginName, loginName))
+				.add(Restrictions.eq("loginName", loginName))
 				.uniqueResult();
 	}
 	

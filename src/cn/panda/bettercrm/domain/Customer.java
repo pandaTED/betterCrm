@@ -16,10 +16,13 @@ public class Customer {
 	private String gender;
 	private int	age;
 	private Date birthday;
+	private String companyName;
 	private String companyPhone;
 	private String cellphone;
 	private String email;
 	private String status;
+	private Date customerSaveDate;
+
 	private Set<Tracking> trackings = new HashSet<Tracking>();
 	private User user;
 	
@@ -77,6 +80,12 @@ public class Customer {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	public Date getCustomerSaveDate() {
+		return customerSaveDate;
+	}
+	public void setCustomerSaveDate(Date customerSaveDate) {
+		this.customerSaveDate = customerSaveDate;
+	}
 	public Set<Tracking> getTrackings() {
 		return trackings;
 	}
@@ -88,6 +97,13 @@ public class Customer {
 	}
 	public void setUser(User user) {
 		this.user = user;
+	}
+	
+	public String getCompanyName() {
+		return companyName;
+	}
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
 	}
 	
 	

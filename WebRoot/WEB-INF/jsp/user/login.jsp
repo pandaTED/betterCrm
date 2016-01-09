@@ -5,7 +5,7 @@
   <head>
     <title>登录</title>
   </head>
-  <body>
+  <body style="text-align: center;">
     
     
     <s:form action="userAction_login">

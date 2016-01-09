@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import cn.panda.bettercrm.dao.UserDao;
 import cn.panda.bettercrm.domain.User;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -16,6 +17,7 @@ import com.opensymphony.xwork2.ModelDriven;
 public class UserAction extends ActionSupport implements ModelDriven<User>{
 	
 	private User model;
+	
 	@Override
 	public User getModel() {
 		if(model == null){
@@ -32,9 +34,15 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 	}
 	
 	public String login(){
-		User user = ud.findByLNameAndPwd(model.getLoginName(), model.getPassword());
-		if(user != null){
-			return "login_sucess";
+		
+		if((model.getLoginName()!=null) && (!model.getPassword().trim().equals("")) && (model.getPassword() != null) && (!model.getPassword().trim().equals(""))){
+			User user = ud.findByLNameAndPwd(model.getLoginName(), model.getPassword());
+			if(user != null){
+				ActionContext.getContext().getSession().put("user", user);
+				return "login_success";
+			}else{
+				return "login_fail";
+			}
 		}else{
 			return "login_fail";
 		}
@@ -47,17 +55,12 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 	
 	public String register(){
 		
-		if((model.getLoginName() !=null) 
-				&& !(model.getLoginName().equals(""))
-				&&(model.getPassword() != null)
-				&& !(model.getPassword().equals(""))){
-			
+		if(model.getLoginName()!=null && !model.getPassword().trim().equals("") && model.getPassword() != null && !model.getPassword().trim().equals("")){
 			ud.save(model);
-			return "register_sucess";
+			return "register_success";
 		}else{
 			return "register_fail";
 		}
 	}
-	
 	
 }

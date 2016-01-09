@@ -5,7 +5,7 @@ import java.util.Date;
 public class Tracking {
 	
 	private Long id;
-	private Date date;
+	private Date trackingSaveDate;
 	private String text;
 	private Customer customer;
 	
@@ -15,11 +15,12 @@ public class Tracking {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Date getDate() {
-		return date;
+
+	public Date getTrackingSaveDate() {
+		return trackingSaveDate;
 	}
-	public void setDate(Date date) {
-		this.date = date;
+	public void setTrackingSaveDate(Date trackingSaveDate) {
+		this.trackingSaveDate = trackingSaveDate;
 	}
 	public String getText() {
 		return text;

@@ -14,10 +14,12 @@
         <property name="gender"></property>
         <property name="age"></property>
         <property name="birthday"></property>
+        <property name="companyName"></property>
         <property name="companyPhone"></property>
         <property name="cellphone"></property>
         <property name="email"></property>
         <property name="status"></property>
+        <property name="customerSaveDate"></property>
 
         <!-- 与User的多对一关系一 -->
         <many-to-one name="user" class="User" column="userId"></many-to-one>

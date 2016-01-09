@@ -11,9 +11,9 @@
 	<br>
 	<s:a action="userAction_registerUI" >用户注册</s:a>
 	<br>
-	<s:a action="">保存客户</s:a>
+	<s:a action="customerAction_saveCustomerUI">保存客户</s:a>
 	<br>
-	<s:a action="">列出所有客户</s:a>
+	<s:a action="customerAction_listCustomer">列出所有客户</s:a>
 	<br>
 
 </body>

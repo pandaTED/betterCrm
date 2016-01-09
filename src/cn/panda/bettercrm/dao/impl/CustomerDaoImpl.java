@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,7 +23,6 @@ public class CustomerDaoImpl implements CustomerDao {
 	private SessionFactory sessionFactory;
 	
 	private Session getSession(){
-		
 		return sessionFactory.getCurrentSession();
 	}
 	
@@ -61,4 +61,13 @@ public class CustomerDaoImpl implements CustomerDao {
 		
 	}
 
+	@Override
+	public List<Customer> findByUser(User user) {
+		
+		return getSession().createCriteria(Customer.class)
+				.add(Restrictions.eq("user.id",user.getId()))
+				.list();
+	}
+	
+	
 }
