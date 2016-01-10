@@ -2,6 +2,7 @@ package cn.panda.bettercrm.dao;
 
 import java.util.List;
 
+import cn.panda.bettercrm.domain.Customer;
 import cn.panda.bettercrm.domain.Tracking;
 
 /**
@@ -30,6 +31,9 @@ public interface TrackingDao {
 	  void update(Tracking tracking);
 //	  查
 	  Tracking find(Long id);
+	  
 	  List<Tracking> findAll();
+	  
+	  List<Tracking> findByCustomer(Customer customer);
 
 }

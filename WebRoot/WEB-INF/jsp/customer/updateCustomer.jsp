@@ -5,12 +5,34 @@
 <html>
   <head>  
     <title>修改客户</title>
-    
+       <style type="text/css">
+		body{
+			text-align:center;
+    		background-color: #B2DFDB;
+    		font-family:Microsoft YaHei;
+		}
+		div.header{
+    		
+    		margin-top: 5%;
+    	}
+	</style>
+    <script src="${pageContext.request.contextPath}/js/ShowCalendar.js"></script>
   </head>
   
-  <body style="text-align: center;">
+  <body>
+  <div class="header">
+  		欢迎你！${user.name}
+  	</div>
+  
+  	<div>
+  	
+  	<s:a action="customerAction_saveCustomerUI" >保存客户</s:a> 
+  	&nbsp &nbsp &nbsp
+  	<s:a action="customerAction_listCustomer">列出所有客户</s:a>
+	<br>
+  	
+  	</div>
 	<s:form action="customerAction_updateCustomer">
-		id=${id}
 		<s:hidden name="id"></s:hidden>
 		<s:textfield name="name">姓名</s:textfield><br>
 		<s:textfield name="status">客户状态</s:textfield><br>
@@ -21,11 +43,7 @@
 		<s:textfield name="email">电子邮箱</s:textfield><br>
 		<s:textfield name="age">年龄</s:textfield><br>
 		
-		<s:textfield name="birthday">客户生日：
-			<s:param name="value">
-			<s:date name="birthday" format="yyyy-MM-dd"></s:date>
-			</s:param>
-		</s:textfield><br>
+		<s:textfield  name="birthday" onclick="showCalendar(this.id)" id="birthday">客户生日：</s:textfield><br>
 		
 		<%-- <s:textarea name="text" rows="10" cols="50">客户跟踪</s:textarea><br> --%>
 		<s:submit value="提交"></s:submit>

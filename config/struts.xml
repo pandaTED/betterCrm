@@ -35,9 +35,9 @@
 		<result name="loginUI" >/WEB-INF/jsp/user/login.jsp</result>
 		<result name="registerUI" >/WEB-INF/jsp/user/register.jsp</result>
 		<result name="login_success" type="redirectAction">customerAction_listCustomer</result>
-		<result name="login_fail" >/WEB-INF/jsp/message/fail.jsp</result>
+		<result name="login_fail" >/WEB-INF/jsp/user_message/fail.jsp</result>
 		<result name="register_success" >/WEB-INF/jsp/message/success.jsp</result>
-		<result name="register_fail" >/WEB-INF/jsp/message/fail.jsp</result>
+		<result name="register_fail" >/WEB-INF/jsp/user_message/fail.jsp</result>
 	</action>
 	<!-- 客户action的配置 -->
 	<action name="customerAction_*" class="customerAction" method="{1}">
@@ -45,16 +45,21 @@
 		<result name="listCustomer">/WEB-INF/jsp/customer/listCustomer.jsp</result>
 		<result name="customerDetail">/WEB-INF/jsp/customer/customerDetail.jsp</result>
 		<result name="updateCustomerUI">/WEB-INF/jsp/customer/updateCustomer.jsp</result>
-		<result name="updateCustomerSuccess">/WEB-INF/jsp/message/success.jsp</result>
-		<result name="updateCustomerFail">/WEB-INF/jsp/message/fail.jsp</result>
-		<result name="saveCustomerSuccess">/WEB-INF/jsp/message/success.jsp</result>
-		<result name="saveCustomerFail">/WEB-INF/jsp/message/fail.jsp</result>
-		<result name="deleteCustomerSuccess">/WEB-INF/jsp/message/success.jsp</result>
-		<result name="deleteCustomerFail">/WEB-INF/jsp/message/fail.jsp</result>
-		
+		<result name="updateCustomerSuccess">/WEB-INF/jsp/customer_message/success.jsp</result>
+		<result name="updateCustomerFail">/WEB-INF/jsp/customer_message/fail.jsp</result>
+		<result name="saveCustomerSuccess">/WEB-INF/jsp/customer_message/success.jsp</result>
+		<result name="saveCustomerFail">/WEB-INF/jsp/customer_message/fail.jsp</result>
+		<result name="deleteCustomerSuccess">/WEB-INF/jsp/customer_message/success.jsp</result>
+		<result name="deleteCustomerFail">/WEB-INF/jsp/customer_message/fail.jsp</result>
 	</action>
 	
-	
+	<!-- Tracking action的配置 -->
+	<action name="trackingAction_*" class="trackingAction" method="{1}">
+		<result name="saveTrackingSuccess" type="redirectAction">customerAction_customerDetail</result>
+		<result name="deleteTrackingSuccess" type="redirectAction">customerAction_customerDetail</result>
+		<result name="customerDetail" type="redirectAction">customerAction_customerDetail</result>
+		
+	</action>
 	
 	</package>
 </struts>    

@@ -1,5 +1,7 @@
 package cn.panda.bettercrm.action;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -39,8 +41,8 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 	@Resource
 	private CustomerDao cd;
 	
-//	@Resource
-//	private TrackingDao td;
+	@Resource
+	private TrackingDao td;
 	
 	@Resource
 	private UserDao ud;
@@ -65,8 +67,6 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 			return "saveCustomerFail";
 		}
 		}
-		
-	
 	}
 	
 	public String listCustomer(){	//列出所有客户
@@ -77,11 +77,29 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 		return "listCustomer";
 	}
 	
-	public String customerDetail(){	//查看客户细节
-		
-		Customer c = cd.find(customer.getId());
-		ActionContext.getContext().getValueStack().push(c);
-		
+	public String customerDetail(){	//查看详细客户信息
+		Long customerId = null;
+			customerId = (Long) ActionContext.getContext().getSession().get("customerId");
+		if(customerId==null){
+			Customer c = cd.find(customer.getId());
+			System.out.println(c.getBirthday());
+			List trackingList = td.findByCustomer(c);
+			ActionContext.getContext().put("trackingList", trackingList);
+			ActionContext.getContext().getValueStack().push(c);
+			Long cId = c.getId();
+			System.out.println("customerDetail中customerId2="+cId);
+			ActionContext.getContext().getSession().put("customerId", cId);
+		}else{
+			Customer c = cd.find(customerId);
+			System.out.println(c.getBirthday());
+			ActionContext.getContext().getValueStack().push(c);
+			
+			ActionContext.getContext().getSession().put("customerId", c.getId());
+			
+			List trackingList = td.findByCustomer(c);
+			ActionContext.getContext().put("trackingList", trackingList);
+			
+		}
 		return "customerDetail";
 	}
 	
@@ -104,7 +122,7 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 		c.setStatus(customer.getStatus());
 		c.setBirthday(customer.getBirthday());
 		
-		cd.update(customer);
+		cd.update(c);
 		
 		return "updateCustomerSuccess";
 	}

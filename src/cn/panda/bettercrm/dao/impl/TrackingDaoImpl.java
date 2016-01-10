@@ -6,10 +6,13 @@ import javax.annotation.Resource;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.panda.bettercrm.dao.TrackingDao;
+import cn.panda.bettercrm.domain.Customer;
 import cn.panda.bettercrm.domain.Tracking;
 import cn.panda.bettercrm.utils.HibernateUtils;
 
@@ -60,4 +63,13 @@ public class TrackingDaoImpl implements TrackingDao {
 		
 	}
 
+	@Override
+	public List<Tracking> findByCustomer(Customer customer) {
+		
+		return  getSession().createCriteria(Tracking.class)
+				.add(Restrictions.eq("customer.id",customer.getId()))
+				.addOrder(Order.desc("id"))
+				.list();
+	}
+	
 }

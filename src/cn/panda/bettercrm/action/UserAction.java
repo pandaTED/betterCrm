@@ -30,7 +30,14 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 	private UserDao ud;
 	
 	public String loginUI(){
-		return "loginUI";
+		User loginedUser = null;
+		loginedUser =  (User) ActionContext.getContext().getSession().get("user");
+		if(loginedUser == null ){
+			return "loginUI";
+		}else{
+			return "login_success";
+		}
+	
 	}
 	
 	public String login(){

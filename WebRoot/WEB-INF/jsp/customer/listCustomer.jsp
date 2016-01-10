@@ -4,11 +4,20 @@
 <html>
   <head>  
     <title>首页</title>
+    <script type="text/javascript">
+    	function delC(id) {
+			if (window.confirm("确定删除？")) {
+				window.location.href = 'customerAction_deleteCustomer.do?id='+id;
+			}
+		}
+    
+    </script>
     <style type="text/css">
     	body{
     		margin: auto;
     		font-family: Microsoft YaHei;
     		background-color: #FFCCBC;
+    		
     	}
     
     
@@ -42,7 +51,7 @@
   	<div class="table">
   		<table border="1">
   		<tr>
-  		<td colspan="9">
+  		<td colspan="10">
   			客户信息
   		</td>
   		<tr>
@@ -73,11 +82,11 @@
   			<td>${companyPhone}</td>
   			<td>${cellphone }</td>
   			<td>${email}</td>
-  			<td>${customerSaveDate}</td>
+  			<td><s:date name="customerSaveDate" format="yyyy-MM-dd HH:mm:ss"></s:date></td>
   			<td>
     		<s:a action="customerAction_customerDetail?id=%{id}">查看详情</s:a>
     		<s:a action="customerAction_updateCustomerUI?id=%{id}">修改</s:a>
-    		<s:a action="customerAction_deleteCustomer?id=%{id}">刪除</s:a>
+    		<a href="javascript:void(0)" onclick="delC(${id})">删除</a>
     		</td>
     		</tr>
     	</s:iterator>
