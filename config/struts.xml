@@ -36,7 +36,7 @@
 		<result name="registerUI" >/WEB-INF/jsp/user/register.jsp</result>
 		<result name="login_success" type="redirectAction">customerAction_listCustomer</result>
 		<result name="login_fail" >/WEB-INF/jsp/user_message/fail.jsp</result>
-		<result name="register_success" >/WEB-INF/jsp/message/success.jsp</result>
+		<result name="register_success" >/WEB-INF/jsp/user_message/success.jsp</result>
 		<result name="register_fail" >/WEB-INF/jsp/user_message/fail.jsp</result>
 	</action>
 	<!-- 客户action的配置 -->

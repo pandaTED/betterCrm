@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang.StringEscapeUtils;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -42,9 +43,12 @@ public class TrackingAction extends ActionSupport implements ModelDriven<Trackin
 			
 			return "customerDetail";
 		}else{
+			String text = tracking.getText().trim();
+			text = StringEscapeUtils.escapeHtml(text);
+			tracking.setText(text);
 			Date nowDate = new Date();
 			Long customerId = (Long) ActionContext.getContext().getSession().get("customerId");
-			System.out.println("addtracking中customerId"+customerId);
+			
 			Customer customer = cd.find(customerId);
 			
 			tracking.setCustomer(customer);

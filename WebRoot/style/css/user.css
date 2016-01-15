@@ -1,0 +1,57 @@
+@CHARSET "UTF-8";
+body{
+			font-family:Microsoft YaHei;
+			background-color: #56c9ac;
+		}
+	
+		div.header{
+		background-color: #56c9ac;
+		height: 8%;
+		}
+		
+		div.logo{
+			float: left;
+			margin-top: 1%;	
+			margin-left: 1%;
+		}
+		
+		div.doSth{
+			float: right;
+			text-align:center;
+			height: 100%;
+			width: 100px;
+			background-color: #e3502f;
+		}
+		
+		#login{
+			color: white;
+			font-size: 30px;	
+		}
+		
+		a:link{
+			text-decoration: none;
+		}
+		
+		div.main{
+			width:320px;
+			height:150px;
+			margin-left:40%;  
+			text-align: right;
+			margin-top: 20%;
+			font-size: 24px;
+			color: white;
+		}
+		
+		#textInput{
+			width: 220Px;
+			height: 30px;
+			border-radius:5px;
+			font-family: Microsoft YaHei;
+			font-size: 20px;
+		}
+		
+		#submit{
+			width: 60px;
+			height: 30px;
+			font-family: Microsoft YaHei
+		}

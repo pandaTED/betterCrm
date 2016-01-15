@@ -4,28 +4,20 @@
 <html>
   <head>
     <title>登录</title>
-	<style type="text/css">
-		body{
-			text-align:center;
-    		background-color: #B2DFDB;
-    		font-family:Microsoft YaHei;
-		}
-	</style>
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/style/css/user.css">
   </head>
   <body>
-    <s:form action="userAction_login">
-    	<s:textfield name="loginName">登录名：</s:textfield><br>
-    	<s:textfield name="password">密码：</s:textfield><br>
-    	<s:submit value="提交"></s:submit>
-    </s:form>
-    <hr>
-    <s:form action="userAction_register" >
-  		<s:textfield name="loginName">登录名：</s:textfield><br>
-  		<s:textfield name="password">密码：</s:textfield><br>
-  		<s:textfield name="name">用户名：</s:textfield><br>
-  		<s:textfield name="email">电子邮箱：</s:textfield><br>
-  		<s:submit value="提交"></s:submit>
-  	</s:form>
-    
+  <div class="header">
+		<div class="logo"><img border="0" src="${pageContext.request.contextPath}/style/img/logo.jpg" /></div>
+		<div class="doSth"><s:a action="userAction_registerUI.do" ><font id="login">注册</font></s:a></div>
+	</div>
+	<div class="main">
+		<s:form action="userAction_login">
+    	<s:textfield name="loginName" id="textInput">登录名：</s:textfield><br>
+    	<s:textfield name="password" id="textInput">密码：</s:textfield><br>
+    	<s:submit id="submit" value="登录"></s:submit>
+    	</s:form>
+	</div>
+ 
   </body>
 </html>
