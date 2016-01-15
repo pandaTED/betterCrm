@@ -40,7 +40,6 @@ public class TrackingAction extends ActionSupport implements ModelDriven<Trackin
 	
 	public String addTracking(){
 		if(tracking.getText() == null || tracking.getText().trim().equals("")){
-			
 			return "customerDetail";
 		}else{
 			String text = tracking.getText().trim();
@@ -48,7 +47,6 @@ public class TrackingAction extends ActionSupport implements ModelDriven<Trackin
 			tracking.setText(text);
 			Date nowDate = new Date();
 			Long customerId = (Long) ActionContext.getContext().getSession().get("customerId");
-			
 			Customer customer = cd.find(customerId);
 			
 			tracking.setCustomer(customer);

@@ -1,25 +1,25 @@
 @CHARSET "UTF-8";
-body{
+	body{
 			font-family:Microsoft YaHei;
 			background-color: #56c9ac;
 		}
 	
 		div.header{
 		background-color: #56c9ac;
-		height: 8%;
+		height: 45px;
 		}
 		
 		div.logo{
 			float: left;
-			margin-top: 1%;	
-			margin-left: 1%;
+			margin-left: 0.5%;
+			margin-top: 0.2%;
 		}
 		
 		div.doSth{
 			float: right;
 			text-align:center;
-			height: 100%;
-			width: 100px;
+			height:100%;
+			width:100px;
 			background-color: #e3502f;
 		}
 		
@@ -42,7 +42,7 @@ body{
 			color: white;
 		}
 		
-		#textInput{
+		#textInput,#birthday{
 			width: 220Px;
 			height: 30px;
 			border-radius:5px;
@@ -55,3 +55,23 @@ body{
 			height: 30px;
 			font-family: Microsoft YaHei
 		}
+		
+		div.userName{
+    		float:left;
+    		margin-left:75%;
+    		font-size:20px;
+			width:150px;
+			line-height: 45px;
+    	}
+    	
+    	div.func{
+    		text-align:center;
+    		margin: auto;
+    		height: 30px;
+    		font-size: 20px;
+    		background-color: #eaedf2;
+    		}
+    		
+    		#userName{
+    		color: white;
+    	}	

@@ -4,6 +4,7 @@
 <html>
   <head>  
     <title>首页</title>
+   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/style/css/user.css">
     <script type="text/javascript">
     	function delC(id) {
 			if (window.confirm("确定删除？")) {
@@ -12,50 +13,41 @@
 		}
     
     </script>
-    <style type="text/css">
+    	<style>
     	body{
-    		margin: auto;
-    		font-family: Microsoft YaHei;
-    		background-color: #FFCCBC;
-    		
-    	}
-    
-    
-    	div.table,div.header{
-    		
-    		margin-top: 5%;
-    	}
-    	table{
-    		min-width:80%;
-    		max-width:95%;
-			text-align:center;
-    		margin: auto;
+    	
+    		background-color: white;
     	}
     	
-    </style>
+    	div.table{
+    		margin-left:15%;
+    		}
+    		
+    	#customerTable{
+    		width: 80%;
+    	}
+    	tr.tr{
+    	
+    		height: 40px;
+    	}
+    	
+    	</style>
   </head>
-  
-  <body style="text-align: center;">
-  	<div class="header">
-  		欢迎你！${user.name}
+  <body>
+    <div class="header">
+		<div class="logo"><img border="0" src="${pageContext.request.contextPath}/style/img/logo.jpg" /></div>
+		<div class="userName"><font id="userName">欢迎你，${user.name}</font></div>
+		<div class="doSth"><s:a action="userAction_logout.do" ><font id="login">注销</font></s:a></div>
+	</div>
+	<div class="func">
+  	<s:a action="customerAction_saveCustomerUI" >新增客户</s:a> 
+  	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  	<s:a action="customerAction_listCustomer">查看所有客户</s:a>
   	</div>
-  
-  	<div>
   	
-  	<s:a action="customerAction_saveCustomerUI" >保存客户</s:a> 
-  	&nbsp &nbsp &nbsp
-  	<s:a action="customerAction_listCustomer">列出所有客户</s:a>
-	<br>
-  	
-  	</div>
   	<div class="table">
-  		<table border="1">
-  		<tr>
-  		<td colspan="10">
-  			客户信息
-  		</td>
-  		<tr>
-  		<tr>
+  		<table id="customerTable" >
+  		<tr class="tr">
   			<td>序号</td>
   			<td>姓名</td>
   			<td>性別</td>
@@ -66,13 +58,13 @@
   			<td>电子邮箱</td>
   			<td>输入日期</td>
   			<td>操作</td>
-  			</tr>
+  		</tr>
   		<s:iterator value="#customerList" status="st" >
   			<s:if test="#st.odd==true"> 
-  			<tr style="background-color:#DCEDC8 ">
+  			<tr style="background-color:#f0f3f8" class="tr">
   			</s:if>
   			<s:else>
-  			<tr style="background-color:#F0F4C3 ">
+  			<tr style="background-color:#eef3fb " class="tr">
   			</s:else>
   			<td><s:property value="#st.count"></s:property></td>
     		<td>${name}</td>

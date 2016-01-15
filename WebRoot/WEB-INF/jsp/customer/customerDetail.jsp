@@ -4,50 +4,35 @@
 <html>
   <head>  
     <title>客户详情</title>
+      <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/style/css/user.css">
     <style type="text/css">
-    	body{
-    		text-align:center;
-    		background-color: #B2DFDB;
-    		font-family:Microsoft YaHei;
+ 		body{
+    		background-color: white;
+    	}
+    	div.customerDetail,div.tracking,div.trackingList{
+    		width: 80%;
+    		margin-left: 300px;
+    	}
+    	table.table{
+    		width: 80%;
     	}
     	
-    	table{
-    		margin:auto;
-    		margin-top:5px;
-    		text-align:left;	
-    		min-width: 50%;
-    		max-width: 75%;
-    	}
-    	
-    	
-    	.text{
-    	font-size: 20px;
-    	font-family:Microsoft YaHei;
-    	background-color: #DCEDC8;
-    	}
-    	
-    	div.header{
-    		
-    		margin-top: 5%;
-    	}
-    </style>
+	</style>
   </head>
   <body>
-  	<div class="header">
-  		欢迎你！${user.name}
-  	</div>
-  
-  	<div>
-  	
-  	<s:a action="customerAction_saveCustomerUI" >保存客户</s:a> 
-  	&nbsp &nbsp &nbsp
-  	<s:a action="customerAction_listCustomer">列出所有客户</s:a>
-	<br>
-  	
-  	</div>
-  
-  		<div class="table">
-  		<table border="1">
+  	 <div class="header">
+		<div class="logo"><img border="0" src="${pageContext.request.contextPath}/style/img/logo.jpg" /></div>
+		<div class="userName"><font id="userName">欢迎你，${user.name}</font></div>
+		<div class="doSth"><s:a action="userAction_logout.do" ><font id="login">注销</font></s:a></div>
+	</div>
+	<div class="func">
+  	<s:a action="customerAction_saveCustomerUI" >新增客户</s:a> 
+  	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  	<s:a action="customerAction_listCustomer">查看所有客户</s:a>
+  		</div>
+  		
+  		<div class="customerDetail">
+  		<table  class="table">
   		<th colspan="2">姓名：${name} &nbsp&nbsp 状态：${status}&nbsp&nbsp客户性別：${gender==1?"男":"女"}&nbsp&nbsp客户年龄：${age}&nbsp&nbsp 生日：<s:date name="birthday" format="yyyy-MM-dd"></s:date> </th>
   		<tr>
   			<td>公司名称：</td> <td>${companyName}</td>
@@ -68,13 +53,12 @@
     	</div>
     	<div class="tracking">
     	<s:form action="trackingAction_addTracking">
-    		<table border="1">
+    		<table class="table" border="1">
     			<tr>
     				<td>跟踪信息</td>
     			</tr>
     				<td>
-    					<s:textarea rows="5" cols="68" name="text" cssClass="text"></s:textarea>
-    					
+    					<s:textarea rows="5" cols="100" name="text" cssClass="text"></s:textarea>	
     				</td>
     				<tr style="text-align: right;">
     					<td>
@@ -85,8 +69,9 @@
     		</table>
     		</s:form>	
     	</div>
-    	<div>
-    		<table border="1">
+    	
+    	<div class="trackingList">
+    		<table border="1" class="table">
     		<s:iterator value="#trackingList">
     			<tr>
    				<td style="background-color:#FFF9C4">追踪时间：<s:date name="trackingSaveDate" format="yyyy-MM-dd HH:mm:ss"></s:date> <s:a action="trackingAction_deleteTracking?id=%{id}">删除</s:a>

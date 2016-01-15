@@ -73,7 +73,7 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 		User user = (User) ActionContext.getContext().getSession().get("user");
 		List<Customer> customerList = cd.findByUser(user);
 		ActionContext.getContext().put("customerList", customerList);
-		
+		ActionContext.getContext().getSession().remove("customerId");
 		return "listCustomer";
 	}
 	
@@ -93,12 +93,9 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 			Customer c = cd.find(customerId);
 			System.out.println(c.getBirthday());
 			ActionContext.getContext().getValueStack().push(c);
-			
 			ActionContext.getContext().getSession().put("customerId", c.getId());
-			
 			List trackingList = td.findByCustomer(c);
-			ActionContext.getContext().put("trackingList", trackingList);
-			
+			ActionContext.getContext().put("trackingList", trackingList);	
 		}
 		return "customerDetail";
 	}

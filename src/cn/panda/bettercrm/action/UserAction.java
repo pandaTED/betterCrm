@@ -70,4 +70,9 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 		}
 	}
 	
+	public String logout(){
+		
+		ActionContext.getContext().getSession().remove("user");
+		return "loginUI";
+	}
 }
