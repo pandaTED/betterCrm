@@ -9,21 +9,18 @@
 	<constant name="struts.ui.theme" value="simple"></constant>
 	<!-- 配置默认的包 -->
 	  <package name="default" namespace="/" extends="struts-default">
-	  
-	  <!-- 可以配置拦截器 -->
-	<!-- <interceptors> -->
-	 	  <!-- 声明拦截器 -->
-<!-- 	  	<interceptor name="" class=""></interceptor> -->
-	  	  <!-- 声明拦截器栈 -->
-<!-- 	  	<interceptor-stack name=""></interceptor-stack> -->
-	 <!--  </interceptors> -->
 
-	  <!-- 声明默认本包中的所有action都要经过设置的拦截器栈 -->
-	  <!-- 	<default-interceptor-ref name=""></default-interceptor-ref>	 -->
-	  <!-- 可以设置全局的result -->
-	<!-- 	<global-results>
-		</global-results>
-		 -->
+	<interceptors>
+		<interceptor name="RequestEncoding" class="cn.panda.bettercrm.interceptor.RequestEncoding"></interceptor>
+		<interceptor-stack name="myInterceptorStack">
+			<interceptor-ref name="RequestEncoding"></interceptor-ref>	<!-- 先配置request编码的拦截器 -->
+<!-- 			<interceptor-ref name="HtmlInterceptor"></interceptor-ref>	再配置html代码转义的拦截器
+ -->			<interceptor-ref name="defaultStack"></interceptor-ref>		
+		</interceptor-stack>
+	</interceptors>
+	
+	 <default-interceptor-ref name="myInterceptorStack"></default-interceptor-ref>	<!-- 设置为默认拦截器栈 -->	 
+		 
 	<action name="helloWorld" class="helloWorld">
 		<!-- 默认的动作是转发 -->
 		<result name="success" type="dispatcher">/WEB-INF/jsp/helloworld.jsp</result>
@@ -62,4 +59,20 @@
 	</action>
 	
 	</package>
-</struts>    
+</struts>  
+
+	  <!-- 可以配置拦截器 -->
+	<!-- <interceptors> -->
+	 	  <!-- 声明拦截器 -->
+<!-- 	  	<interceptor name="" class=""></interceptor> -->
+	  	  <!-- 声明拦截器栈 -->
+<!-- 	  	<interceptor-stack name=""></interceptor-stack> -->
+	 <!--  </interceptors> -->
+
+	  <!-- 声明默认本包中的所有action都要经过设置的拦截器栈 -->
+	  <!-- 	<default-interceptor-ref name=""></default-interceptor-ref>	 -->
+	  
+	  <!-- 可以设置全局的result -->
+	<!-- 	<global-results>
+		</global-results>
+		 -->  

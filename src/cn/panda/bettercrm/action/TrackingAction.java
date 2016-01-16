@@ -43,12 +43,10 @@ public class TrackingAction extends ActionSupport implements ModelDriven<Trackin
 			return "customerDetail";
 		}else{
 			String text = tracking.getText().trim();
-			text = StringEscapeUtils.escapeHtml(text);
 			tracking.setText(text);
 			Date nowDate = new Date();
 			Long customerId = (Long) ActionContext.getContext().getSession().get("customerId");
 			Customer customer = cd.find(customerId);
-			
 			tracking.setCustomer(customer);
 			tracking.setTrackingSaveDate(nowDate);
 			
