@@ -1,0 +1,50 @@
+<!DOCTYPE validators PUBLIC
+        "-//Apache Struts//XWork Validator 1.0.2//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+
+<validators>
+
+    <field name="name">
+    	<field-validator type="requiredstring">
+    		<param name="trim">true</param>
+    		<message>姓名不能为空</message>
+    	</field-validator>
+    </field>
+    
+    <field name="email">
+    	<field-validator type="email">
+    		<message>不合法的电子邮件地址！</message>
+    	</field-validator>
+    	<field-validator type="requiredstring">
+    		<param name="trim">true</param>
+    		<message>邮箱地址不能为空！</message>
+    	</field-validator>
+    </field>
+    
+    <field name="status">
+    	<field-validator type="requiredstring">
+    		<param name="trim">true</param>
+    		<message>客户状态不能为空</message>
+    	</field-validator>
+    </field>
+    
+  	<field name="birthday">
+    	<field-validator type="date">
+    		<param name="min">1990-1-1</param>
+    		<param name="max">2017-1-1</param>
+    		<message>不合法的生日范围</message>
+    	</field-validator>
+     </field>
+     
+     <field name="age">
+     	<field-validator type="int">
+     		<param name="min">1</param>
+     		<param name="max">120</param>
+     		<message>年龄超出范围</message>
+     	</field-validator>
+     	<field-validator type="conversion">
+     		<message>只能输入数字</message>
+     	</field-validator>
+     </field>
+   
+</validators>

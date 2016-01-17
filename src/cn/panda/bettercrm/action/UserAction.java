@@ -61,18 +61,31 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 	
 	
 	public String register(){
-		
-		if(model.getLoginName()!=null && !model.getPassword().trim().equals("") && model.getPassword() != null && !model.getPassword().trim().equals("")){
+	
+		if(model.getLoginName()==null || model.getLoginName().trim().equals("") || model.getPassword()==null ||model.getPassword().trim().equals("")){
+			
+			return "register_fail";
+		}else{
 			ud.save(model);
 			return "register_success";
-		}else{
-			return "register_fail";
 		}
 	}
 	
 	public String logout(){
-		
 		ActionContext.getContext().getSession().remove("user");
 		return "loginUI";
 	}
+
+	
+	public void validateRegister() {
+		if(model.getLoginName() == null || model.getLoginName().trim().equals("")){
+			this.addFieldError("loginName", "登录名不能为空！");
+		}
+		
+	}
+	
+	
+	
+	
+	
 }

@@ -33,9 +33,9 @@
 		}
 		
 		div.main{
-			width:320px;
+			width:600px;
 			height:150px;
-			margin-left:40%;  
+			margin-left:30%;  
 			text-align: right;
 			margin-top: 20%;
 			font-size: 24px;
@@ -75,3 +75,9 @@
     		#userName{
     		color: white;
     	}	
+    	
+    	
+    	font.fieldError{
+ 		font-size: 10px;
+ 		color: red;	
+ 		}

@@ -5,6 +5,8 @@
   <head>
     <title>注册</title>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/style/css/user.css">
+ 	
+  	
   </head>
   
   <body>
@@ -14,14 +16,14 @@
 	</div>
 	<div class="main">
 		<s:form action="userAction_register" >
-  		<s:textfield name="loginName" id="textInput">登录名</s:textfield><br>
-  		<s:textfield name="password" id="textInput">密码</s:textfield><br>
-  		<s:textfield name="name" id="textInput">用户名</s:textfield><br>
-  		<s:textfield name="email" id="textInput">电子邮箱</s:textfield><br>
+  		<s:textfield name="loginName" id="textInput">登录名</s:textfield><font class="fieldError">${FieldErrors.loginName[0]}</font><br>
+  		<s:textfield name="password" id="textInput">密码</s:textfield><font class="fieldError">${FieldErrors.password[0]}</font><br>
+  		<s:textfield name="name" id="textInput">用户名</s:textfield><font class="fieldError">${FieldErrors.name[0]}</font><br>
+  		<s:textfield name="email" id="textInput">电子邮箱</s:textfield><font class="fieldError">${FieldErrors.email[0]}</font><br>
   		<s:submit id="submit" value="注册"></s:submit>
   	</s:form>
 	</div>
-	
-    
-  </body>
+
+ 	</body>
 </html>
+<!--class="main"  -->
