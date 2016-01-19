@@ -40,7 +40,7 @@
      	<field-validator type="int">
      		<param name="min">1</param>
      		<param name="max">120</param>
-     		<message>年龄超出范围</message>
+     		<message>请输入年龄</message>
      	</field-validator>
      	<field-validator type="conversion">
      		<message>只能输入数字</message>

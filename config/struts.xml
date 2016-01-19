@@ -68,10 +68,13 @@
 	
 	<!-- Tracking action的配置 -->
 	<action name="trackingAction_*" class="trackingAction" method="{1}">
-		<result name="saveTrackingSuccess" type="redirectAction">customerAction_customerDetail</result>
 		<result name="deleteTrackingSuccess" type="redirectAction">customerAction_customerDetail</result>
+	</action>
+	
+	<action name="trackingAction_addTracking" class="trackingAction" method="addTracking">
+		<result name="saveTrackingSuccess" type="redirectAction">customerAction_customerDetail</result>
 		<result name="customerDetail" type="redirectAction">customerAction_customerDetail</result>
-		
+		<result name="input">/WEB-INF/jsp/customer/customerDetail.jsp</result>
 	</action>
 	
 	</package>
