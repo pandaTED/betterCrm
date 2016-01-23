@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 import cn.panda.bettercrm.dao.CustomerDao;
 import cn.panda.bettercrm.domain.Customer;
 import cn.panda.bettercrm.domain.User;
-import cn.panda.bettercrm.utils.HibernateUtils;
 
 @Transactional
 @Repository

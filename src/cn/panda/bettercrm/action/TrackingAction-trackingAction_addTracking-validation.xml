@@ -14,7 +14,7 @@
 	<field name="text">
 		<field-validator type="stringlength">
  			<param name="maxLength">255</param>  
- 			<param name="minLength">10</param>  
+ 			<param name="minLength">5</param>  
  		<message>文本长度为${minLength}到${maxLength}之间！</message>  
 		</field-validator>
 	</field>

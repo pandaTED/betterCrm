@@ -10,7 +10,7 @@
 <script src="${pageContext.request.contextPath}/js/jquery.validate.js"></script>
 <script src="${pageContext.request.contextPath}/js/messages_zh.js"></script>
 <%-- <script src="${pageContext.request.contextPath}/js/jquery.metadata.js"></script> --%>
-<script type="text/javascript">
+ <script type="text/javascript">
 	$().ready(function() {
 		$("#registerForm").validate({
 			rules : {

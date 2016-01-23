@@ -9,7 +9,7 @@
 <script src="${pageContext.request.contextPath}/js/jquery-2.1.4.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery.validate.js"></script>
 <script src="${pageContext.request.contextPath}/js/messages_zh.js"></script>
-<script type="text/javascript">
+ <script type="text/javascript">
 	$().ready(function() {
 		$("#loginForm").validate({
 			rules : {
@@ -24,13 +24,13 @@
 			}
 		});
 	});
-</script>
+</script> 
 <style type="text/css">
-div.main {
+	div.main {
 	width: 50%;
 	font-size: 20px;
 	text-align: center;
-}
+	}
 </style>
 
 </head>

@@ -74,7 +74,7 @@
 	<action name="trackingAction_addTracking" class="trackingAction" method="addTracking">
 		<result name="saveTrackingSuccess" type="redirectAction">customerAction_customerDetail</result>
 		<result name="customerDetail" type="redirectAction">customerAction_customerDetail</result>
-		<result name="input">/WEB-INF/jsp/customer/customerDetail.jsp</result>
+		<result name="input">customerAction_customerDetail</result>
 	</action>
 	
 	</package>

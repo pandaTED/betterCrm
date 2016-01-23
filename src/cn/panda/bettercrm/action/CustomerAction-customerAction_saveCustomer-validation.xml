@@ -3,7 +3,6 @@
         "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
 
 <validators>
-
     <field name="name">
     	<field-validator type="requiredstring">
     		<param name="trim">true</param>

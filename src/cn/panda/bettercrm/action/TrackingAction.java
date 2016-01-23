@@ -4,18 +4,18 @@ import java.util.Date;
 
 import javax.annotation.Resource;
 
-import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+
+import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
 
 import cn.panda.bettercrm.dao.CustomerDao;
 import cn.panda.bettercrm.dao.TrackingDao;
 import cn.panda.bettercrm.domain.Customer;
 import cn.panda.bettercrm.domain.Tracking;
-
-import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.ModelDriven;
 
 @Controller
 @Scope("prototype")
@@ -44,7 +44,7 @@ public class TrackingAction extends ActionSupport implements ModelDriven<Trackin
 			return "customerDetail";
 		}else{
 			String text = tracking.getText().trim();
-			text = StringEscapeUtils.escapeHtml(text);
+			text = StringEscapeUtils.escapeHtml4(text);
 			tracking.setText(text);
 			Date nowDate = new Date();
 			Long customerId = (Long) ActionContext.getContext().getSession().get("customerId");

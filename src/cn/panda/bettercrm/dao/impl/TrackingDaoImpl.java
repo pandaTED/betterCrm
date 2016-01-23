@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 import cn.panda.bettercrm.dao.TrackingDao;
 import cn.panda.bettercrm.domain.Customer;
 import cn.panda.bettercrm.domain.Tracking;
-import cn.panda.bettercrm.utils.HibernateUtils;
 
 @Transactional
 @Repository
