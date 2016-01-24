@@ -14,10 +14,6 @@
     	<field-validator type="email">
     		<message>不合法的电子邮件地址！</message>
     	</field-validator>
-    	<field-validator type="requiredstring">
-    		<param name="trim">true</param>
-    		<message>邮箱地址不能为空！</message>
-    	</field-validator>
     </field>
     
     <field name="status">
@@ -36,13 +32,21 @@
      </field>
      
      <field name="age">
-     	<field-validator type="int">
-     		<param name="min">1</param>
-     		<param name="max">120</param>
-     		<message>请输入年龄</message>
-     	</field-validator>
+		<field-validator type="int">
+			<param name="min">10</param>
+			<param name="max">100</param>
+			<message>不合法的年龄范围</message>
+		</field-validator>
+		
      	<field-validator type="conversion">
      		<message>只能输入数字</message>
+     	</field-validator>
+     </field>
+     
+     <field name="cellphone">
+     	<field-validator type="requiredstring">
+     		<param name="trim">true</param>
+     		<message>手机号码不能为空</message>
      	</field-validator>
      </field>
    

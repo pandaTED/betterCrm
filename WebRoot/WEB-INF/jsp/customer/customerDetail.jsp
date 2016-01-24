@@ -6,6 +6,22 @@
 <title>客户详情</title>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/style/css/user.css">
+	    <script src="${pageContext.request.contextPath}/js/jquery-2.1.4.js"></script>
+		<script src="${pageContext.request.contextPath}/js/jquery.validate.js"></script>
+		<script src="${pageContext.request.contextPath}/js/messages_zh.js"></script>
+		<script type="text/javascript">
+		 $().ready(function() {
+				$("#addTrackingForm").validate({
+					rules : {
+						text: {
+							required : true,
+							minlength : 10,
+							maxlength:255
+						}	
+					}
+				});
+			});
+		</script>
 <style type="text/css">
 body {
 	background-color: white;
@@ -72,7 +88,7 @@ table.table {
 		</table>
 	</div>
 	<div class="tracking">
-		<s:form action="trackingAction_addTracking">
+		<s:form id="addTrackingForm" action="trackingAction_addTracking">
 			<table class="table" border="1">
 				<tr>
 					<td>跟踪信息</td>

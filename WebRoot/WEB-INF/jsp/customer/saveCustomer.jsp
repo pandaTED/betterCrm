@@ -6,6 +6,9 @@
   <head>  
     <title>保存客户</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/style/css/user.css">
+    <script src="${pageContext.request.contextPath}/js/jquery-2.1.4.js"></script>
+	<script src="${pageContext.request.contextPath}/js/jquery.validate.js"></script>
+	<script src="${pageContext.request.contextPath}/js/messages_zh.js"></script>
        <style type="text/css">
 			body{
     		background-color: white;
@@ -21,6 +24,27 @@
 		</style>
 
   <%--   <script src="${pageContext.request.contextPath}/js/ShowCalendar.js"></script> --%>
+  
+  <script type="text/javascript">
+  $().ready(function() {
+		$("#saveCustomerForm").validate({
+			rules : {
+				name: {
+					required : true,
+					minlength : 2
+				},
+				status: {
+					required : true,
+					minlength : 2
+				},
+				cellphone: {
+					required : true,
+					minlength : 11
+				}	
+			}
+		});
+	});
+  </script>
   </head>
   
   <body>
@@ -36,15 +60,15 @@
   	</div>
   
   <div class="saveTable">
-	<s:form action="customerAction_saveCustomer">
+	<s:form id="saveCustomerForm" action="customerAction_saveCustomer">
 		<s:textfield cssClass="textInput" name="name">姓名</s:textfield><font class="fieldError">${FieldErrors.name[0]}</font><br>
 		<s:textfield cssClass="textInput" name="status">客户状态</s:textfield><font class="fieldError">${FieldErrors.status[0]}</font><br>
 		<s:radio name="gender" list="#{'1':'男士','0':'女士' }" value="1">性别</s:radio><br>
 		<s:textfield cssClass="textInput" name="companyName">公司名称</s:textfield><br>
 		<s:textfield cssClass="textInput" name="companyPhone">办公电话</s:textfield><br>
-		<s:textfield cssClass="textInput" name="cellphone">手机</s:textfield><br>
+		<s:textfield cssClass="textInput" name="cellphone">手机</s:textfield><font class="fieldError">${FieldErrors.cellphone[0]}</font><br>
 		<s:textfield cssClass="textInput" name="email">电子邮箱</s:textfield><font class="fieldError">${FieldErrors.email[0]}</font><br>
-		<s:textfield cssClass="textInput" name="age" value="">年龄</s:textfield><font class="fieldError">${FieldErrors.age[0]}</font><br>
+		<s:textfield cssClass="textInput" name="age" value='25' >年龄</s:textfield><font class="fieldError">${FieldErrors.age[0]}</font><br>
 		<s:textfield cssClass="textInput" name="birthday">客户生日
 			<s:param name="value"><s:date name="birthday" format="yyyy-MM-dd"></s:date></s:param>
 		</s:textfield><font class="fieldError">${FieldErrors.birthday[0]}</font><br>
