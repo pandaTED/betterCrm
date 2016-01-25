@@ -4,64 +4,46 @@
 <html>
 <head>
 <title>登录</title>
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/style/css/user.css">
-<script src="${pageContext.request.contextPath}/js/jquery-2.1.4.js"></script>
-<script src="${pageContext.request.contextPath}/js/jquery.validate.js"></script>
-<script src="${pageContext.request.contextPath}/js/messages_zh.js"></script>
-<script src="${pageContext.request.contextPath}/js/login_validateLoginName.js"></script>
- <script type="text/javascript">
-	$().ready(function() {
-		$("#loginForm").validate({
-			rules : {
-				loginName : {
-					required : true,
-					minlength : 4
-				},
-				password : {
-					required : true,
-					minlength : 6
-				}
-			}
-		});
-	});
-</script> 
-<style type="text/css">
-
-</style>
+<%@include file="user_js_css.jsp"%>
+<script
+	src="${pageContext.request.contextPath}/js/ajax/login_validateLoginName.js"></script>
+<script
+	src="${pageContext.request.contextPath}/js/validate_rules/user_login.js"></script>
 
 </head>
 <body>
-<div class="father">
-	<div class="header">
-		<div class="logo">
-			<img border="0"
-				src="${pageContext.request.contextPath}/style/img/logo.jpg" />
+	<div class="father">
+		<div class="header">
+			<div class="logo">
+				<img border="0"
+					src="${pageContext.request.contextPath}/style/img/logo.jpg" />
+			</div>
+			<div class="doSth">
+				<s:a action="userAction_registerUI.do">
+					<font id="login">注册</font>
+				</s:a>
+			</div>
 		</div>
-		<div class="doSth">
-			<s:a action="userAction_registerUI.do">
-				<font id="login">注册</font>
-			</s:a>
-		</div>
-	</div>
-	<div class="main">
+		<div class="main">
 			<s:form id="loginForm" action="userAction_login">
-			<p>
-			<label for="loginName">登录名</label>
-			<s:textfield name="loginName" cssClass="textInput" onblur="hadLoginName(this.value)" />
-			 <span id = "loginNameNotExist" style="font-size: 10px;" ></span>
-			<font class="fieldError">${FieldErrors.loginName[0]}</font>
-			</p>
-			<p>
-			<label for="loginName">密&emsp;码</label>
-			<s:textfield name="password" cssClass="textInput" />
-			<font class="fieldError">${FieldErrors.password[0]}</font>
-			</p>
-			<p>
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<s:submit id="submit" value="登录"></s:submit>
-			</p>
-		</s:form>
-	</div>
+				<p>
+					<label for="loginName">登录名</label>
+					<s:textfield name="loginName" cssClass="textInput"
+						onblur="hadLoginName(this.value)" />
+					<span id="loginNameNotExist" style="font-size: 10px;"></span> <font
+						class="fieldError">${FieldErrors.loginName[0]}</font>
+				</p>
+				<p>
+					<label for="loginName">密&emsp;码</label>
+					<s:textfield name="password" cssClass="textInput" />
+					<font class="fieldError">${FieldErrors.password[0]}</font>
+				</p>
+				<p>
+					&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					<s:submit id="submit" value="登录"></s:submit>
+				</p>
+			</s:form>
+		</div>
 	</div>
 
 </body>

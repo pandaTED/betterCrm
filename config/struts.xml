@@ -5,93 +5,95 @@
 	<constant name="struts.action.extension" value="do"></constant>
 	<!-- 配置开发模式 -->
 	<constant name="struts.devMode" value="false"></constant>
-	<!-- 配置主题为simple-->
+	<!-- 配置主题为simple -->
 	<constant name="struts.ui.theme" value="simple"></constant>
 	<!-- 配置默认的包 -->
-	  <package name="default" namespace="/" extends="struts-default">
+	<package name="default" namespace="/" extends="struts-default">
 
-	<interceptors>
-		<interceptor name="RequestEncoding" class="cn.panda.bettercrm.interceptor.RequestEncoding"></interceptor>
-		<interceptor-stack name="myInterceptorStack">
-			<interceptor-ref name="RequestEncoding"></interceptor-ref>	<!-- 先配置request编码的拦截器 -->
-<!-- 			<interceptor-ref name="HtmlInterceptor"></interceptor-ref>	再配置html代码转义的拦截器
- -->			<interceptor-ref name="defaultStack"></interceptor-ref>		
-		</interceptor-stack>
-	</interceptors>
-	
-	 <default-interceptor-ref name="myInterceptorStack"></default-interceptor-ref>	<!-- 设置为默认拦截器栈 -->	 
-		 
-	<action name="helloWorld" class="helloWorld">
-		<!-- 默认的动作是转发 -->
-		<result name="success" type="dispatcher">/WEB-INF/jsp/helloworld.jsp</result>
-	</action>
-	
-	<!-- 用户action的配置 -->
-	
-	<action name="userAction_login" class="userAction" method="login">
-		<result name="input">/WEB-INF/jsp/user/login.jsp</result>
-		<result name="login_success" type="redirectAction">customerAction_listCustomer</result>
-		<result name="login_fail" >/WEB-INF/jsp/user_message/fail.jsp</result>
-	</action>
-	
-	<action name="userAction_register" class="userAction" method="register">
-		<result name="input">/WEB-INF/jsp/user/register.jsp</result>
-		<result name="register_success">/WEB-INF/jsp/user_message/success.jsp</result>
-		<result name="register_fail" >/WEB-INF/jsp/user_message/fail.jsp</result>
-	</action>
-	
-	<action name="userAction_*" class="userAction" method="{1}">
-		<!-- 默认的动作是转发 -->
-		<result name="loginUI" >/WEB-INF/jsp/user/login.jsp</result>
-		<result name="registerUI" >/WEB-INF/jsp/user/register.jsp</result>	
-	</action>
-	
-	<!-- 客户action的配置 -->
-	<action name="customerAction_saveCustomer" class="customerAction" method="saveCustomer">
-		<result name="saveCustomerSuccess">/WEB-INF/jsp/customer_message/success.jsp</result>
-		<result name="saveCustomerFail">/WEB-INF/jsp/customer_message/fail.jsp</result>
-		<result name="input">/WEB-INF/jsp/customer/saveCustomer.jsp</result>
-	</action>
-	<action name="customerAction_updateCustomer" class="customerAction" method="updateCustomer">
-		<result name="updateCustomerSuccess">/WEB-INF/jsp/customer_message/success.jsp</result>
-		<result name="updateCustomerFail">/WEB-INF/jsp/customer_message/fail.jsp</result>
-		<result name="input">/WEB-INF/jsp/customer/updateCustomer.jsp</result>
-	</action>
-	<action name="customerAction_*" class="customerAction" method="{1}">
-		<result name="saveCustomerUI">/WEB-INF/jsp/customer/saveCustomer.jsp</result>
-		<result name="listCustomer">/WEB-INF/jsp/customer/listCustomer.jsp</result>
-		<result name="customerDetail">/WEB-INF/jsp/customer/customerDetail.jsp</result>
-		<result name="updateCustomerUI">/WEB-INF/jsp/customer/updateCustomer.jsp</result>
-		<result name="deleteCustomerSuccess">/WEB-INF/jsp/customer_message/success.jsp</result>
-		<result name="deleteCustomerFail">/WEB-INF/jsp/customer_message/fail.jsp</result>
-	</action>
-	
-	<!-- Tracking action的配置 -->
-	<action name="trackingAction_*" class="trackingAction" method="{1}">
-		<result name="deleteTrackingSuccess" type="redirectAction">customerAction_customerDetail</result>
-	</action>
-	
-	<action name="trackingAction_addTracking" class="trackingAction" method="addTracking">
-		<result name="saveTrackingSuccess" type="redirectAction">customerAction_customerDetail</result>
-		<result name="customerDetail" type="redirectAction">customerAction_customerDetail</result>
-		<result name="input">customerAction_customerDetail</result>
-	</action>
-	
+		<interceptors>
+			<interceptor name="RequestEncoding"
+				class="cn.panda.bettercrm.interceptor.RequestEncoding"></interceptor>
+			<interceptor-stack name="myInterceptorStack">
+				<interceptor-ref name="RequestEncoding"></interceptor-ref>	<!-- 先配置request编码的拦截器 -->
+				<!-- <interceptor-ref name="HtmlInterceptor"></interceptor-ref> 再配置html代码转义的拦截器 -->
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="myInterceptorStack"></default-interceptor-ref>	<!-- 设置为默认拦截器栈 -->
+
+		<action name="helloWorld" class="helloWorld">
+			<!-- 默认的动作是转发 -->
+			<result name="success" type="dispatcher">/WEB-INF/jsp/helloworld.jsp</result>
+		</action>
+
+		<!-- 用户action的配置 -->
+
+		<action name="userAction_login" class="userAction" method="login">
+			<result name="input">/WEB-INF/jsp/user/login.jsp</result>
+			<result name="login_success" type="redirectAction">customerAction_listCustomer</result>
+			<result name="login_fail">/WEB-INF/jsp/user_message/fail.jsp</result>
+		</action>
+
+		<action name="userAction_register" class="userAction" method="register">
+			<result name="input">/WEB-INF/jsp/user/register.jsp</result>
+			<result name="register_success">/WEB-INF/jsp/user_message/success.jsp</result>
+			<result name="register_fail">/WEB-INF/jsp/user_message/fail.jsp</result>
+		</action>
+
+		<action name="userAction_*" class="userAction" method="{1}">
+			<!-- 默认的动作是转发 -->
+			<result name="loginUI">/WEB-INF/jsp/user/login.jsp</result>
+			<result name="registerUI">/WEB-INF/jsp/user/register.jsp</result>
+		</action>
+
+		<!-- 客户action的配置 -->
+		<action name="customerAction_saveCustomer" class="customerAction"
+			method="saveCustomer">
+			<result name="saveCustomerSuccess">/WEB-INF/jsp/customer_message/success.jsp</result>
+			<result name="saveCustomerFail">/WEB-INF/jsp/customer_message/fail.jsp</result>
+			<result name="input">/WEB-INF/jsp/customer/saveCustomer.jsp</result>
+		</action>
+		<action name="customerAction_updateCustomer" class="customerAction"
+			method="updateCustomer">
+			<result name="updateCustomerSuccess">/WEB-INF/jsp/customer_message/success.jsp</result>
+			<result name="updateCustomerFail">/WEB-INF/jsp/customer_message/fail.jsp</result>
+			<result name="input">/WEB-INF/jsp/customer/updateCustomer.jsp</result>
+		</action>
+		<action name="customerAction_*" class="customerAction" method="{1}">
+			<result name="saveCustomerUI">/WEB-INF/jsp/customer/saveCustomer.jsp</result>
+			<result name="listCustomer">/WEB-INF/jsp/customer/listCustomer.jsp</result>
+			<result name="customerDetail">/WEB-INF/jsp/customer/customerDetail.jsp</result>
+			<result name="updateCustomerUI">/WEB-INF/jsp/customer/updateCustomer.jsp</result>
+			<result name="deleteCustomerSuccess">/WEB-INF/jsp/customer_message/success.jsp</result>
+			<result name="deleteCustomerFail">/WEB-INF/jsp/customer_message/fail.jsp</result>
+		</action>
+
+		<!-- Tracking action的配置 -->
+		<action name="trackingAction_*" class="trackingAction" method="{1}">
+			<result name="deleteTrackingSuccess" type="redirectAction">customerAction_customerDetail</result>
+		</action>
+
+		<action name="trackingAction_addTracking" class="trackingAction"
+			method="addTracking">
+			<result name="saveTrackingSuccess" type="redirectAction">customerAction_customerDetail</result>
+			<result name="customerDetail" type="redirectAction">customerAction_customerDetail</result>
+			<result name="input">customerAction_customerDetail</result>
+		</action>
+
 	</package>
-</struts>  
+</struts>
 
-	  <!-- 可以配置拦截器 -->
-	<!-- <interceptors> -->
-	 	  <!-- 声明拦截器 -->
-<!-- 	  	<interceptor name="" class=""></interceptor> -->
-	  	  <!-- 声明拦截器栈 -->
-<!-- 	  	<interceptor-stack name=""></interceptor-stack> -->
-	 <!--  </interceptors> -->
+<!-- 可以配置拦截器 -->
+<!-- <interceptors> -->
+<!-- 声明拦截器 -->
+<!-- <interceptor name="" class=""></interceptor> -->
+<!-- 声明拦截器栈 -->
+<!-- <interceptor-stack name=""></interceptor-stack> -->
+<!-- </interceptors> -->
 
-	  <!-- 声明默认本包中的所有action都要经过设置的拦截器栈 -->
-	  <!-- 	<default-interceptor-ref name=""></default-interceptor-ref>	 -->
-	  
-	  <!-- 可以设置全局的result -->
-	<!-- 	<global-results>
-		</global-results>
-		 -->  
+<!-- 声明默认本包中的所有action都要经过设置的拦截器栈 -->
+<!-- <default-interceptor-ref name=""></default-interceptor-ref> -->
+
+<!-- 可以设置全局的result -->
+<!-- <global-results> </global-results> -->  

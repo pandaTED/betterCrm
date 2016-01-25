@@ -4,18 +4,18 @@
 
 <validators>
 
-    <field name="loginName">
-    	<field-validator type="requiredstring">
-    		<param name="trim">true</param>
-    		<message>登录名不能为空！</message>
-    	</field-validator>
-    </field>
-    
-    <field name="password">
-    	<field-validator type="requiredstring">
-    		<param name="trim">true</param>
-    		<message>密码不能为空！</message>
-    	</field-validator>
-    </field>
-    
+	<field name="loginName">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>登录名不能为空！</message>
+		</field-validator>
+	</field>
+
+	<field name="password">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>密码不能为空！</message>
+		</field-validator>
+	</field>
+
 </validators>

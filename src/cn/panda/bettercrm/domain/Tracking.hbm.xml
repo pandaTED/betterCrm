@@ -5,17 +5,17 @@
 
 <hibernate-mapping package="cn.panda.bettercrm.domain">
 
-    <class name="Tracking" table="bettercrm_tracking">
-        <id name="id">
-            <generator class="native"/> 
-        </id>
-        <property name="text"></property>
-        <property name="trackingSaveDate"></property>
-        
-        
-        <!-- 与Customer的多对一关系 -->
-        <many-to-one name="customer" class="Customer" column="customerId"></many-to-one>
-        
+	<class name="Tracking" table="bettercrm_tracking">
+		<id name="id">
+			<generator class="native" />
+		</id>
+		<property name="text"></property>
+		<property name="trackingSaveDate"></property>
+
+
+		<!-- 与Customer的多对一关系 -->
+		<many-to-one name="customer" class="Customer" column="customerId"></many-to-one>
+
 	</class>
 </hibernate-mapping>
 

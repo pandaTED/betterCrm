@@ -1,95 +1,115 @@
 @CHARSET "UTF-8";
-	body{
-			font-family:Microsoft YaHei;
-			background-color: #FFFFFF;
-		}
-	
-		div.header{
-		background-color: #56c9ac;
-		height: 45px;
-		min-width: 900px;
-		}
-		
-		div.logo{
-			float: left;
-			margin-left: 0.5%;
-			margin-top: 0.2%;
-		}
-		
-		div.doSth{
-			float: right;
-			text-align:center;
-			height:100%;
-			width:100px;
-			background-color: #e3502f;
-		}
-		
-		#login{
-			color: black;
-			font-size: 30px;	
-		}
-		
-		a:link{
-			text-decoration: none;
-		}
-		
-		
-		
-		#birthday{
-			width: 220Px;
-			height: 30px;
-			border-radius:5px;
-			font-family: Microsoft YaHei;
-			font-size: 20px;
-		}
-		
-		#submit,#reset{
-			height:30px;
-			width:60px;
-			font-family: Microsoft YaHei
-		}
-		
-		div.userName{
-    		float:left;
-    		margin-left:75%;
-    		font-size:20px;
-			width:150px;
-			line-height: 45px;
-    	}
-    	
-    	div.func{
-    		text-align:center;
-    		margin: auto;
-    		height: 30px;
-    		font-size: 20px;
-    		background-color: #C8E6C9;
-    		}
-    		#userName{
-    		color: white;
-    	}	
-    	
-    	font.fieldError{
- 		font-size: 10px;
- 		color: red;	
- 		}
- 		
- 		input.textInput{
- 			width: 220Px;
-			height: 30px;
-			border-radius:5px;
-			font-family: Microsoft YaHei;
-			font-size: 20px;
- 		}
- 			div.father{
-		max-width: 100%;
-		min-width: 1200px;
-	
-	}
-	
-		div.main{
-		position: absolute;
-		top:40%;
-		left:40%;
-		font-size: 24px;
-		color: black;
-	}
+
+body {
+	font-family: Microsoft YaHei;
+	background-color: #FFFFFF;
+}
+
+div.header {
+	background-color: #56c9ac;
+	height: 45px;
+	min-width: 900px;
+}
+
+div.logo {
+	float: left;
+	margin-left: 0.5%;
+	margin-top: 0.2%;
+}
+
+div.doSth {
+	float: right;
+	text-align: center;
+	height: 100%;
+	width: 100px;
+	background-color: #e3502f;
+}
+
+#login {
+	color: black;
+	font-size: 30px;
+}
+
+a:link {
+	text-decoration: none;
+}
+
+#birthday {
+	width: 220Px;
+	height: 30px;
+	border-radius: 5px;
+	font-family: Microsoft YaHei;
+	font-size: 20px;
+}
+
+#submit, #reset {
+	height: 30px;
+	width: 60px;
+	font-family: Microsoft YaHei
+}
+
+div.userName {
+	float: left;
+	margin-left: 75%;
+	font-size: 20px;
+	width: 150px;
+	line-height: 45px;
+}
+
+div.func {
+	text-align: center;
+	margin: auto;
+	height: 30px;
+	font-size: 20px;
+	background-color: #C8E6C9;
+}
+
+#userName {
+	color: white;
+}
+
+font.fieldError {
+	font-size: 10px;
+	color: red;
+}
+
+input.textInput {
+	width: 220Px;
+	height: 30px;
+	border-radius: 5px;
+	font-family: Microsoft YaHei;
+	font-size: 20px;
+}
+
+div.father {
+	max-width: 100%;
+	min-width: 1200px;
+}
+
+div.main {
+	position: absolute;
+	top: 40%;
+	left: 40%;
+	font-size: 24px;
+	color: black;
+}
+
+div.saveTable {
+	position: absolute;
+	top: 10%;
+	left: 40%;
+	font-size: 20px;
+	color: black;
+}
+
+div.table {
+	margin-left: 15%;
+}
+
+#customerTable {
+	width: 80%;
+}
+
+tr.tr {
+	height: 40px;
+}

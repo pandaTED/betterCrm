@@ -4,24 +4,9 @@
 <html>
 <head>
 <title>客户详情</title>
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/style/css/user.css">
-<script src="${pageContext.request.contextPath}/js/jquery-2.1.4.js"></script>
-<script src="${pageContext.request.contextPath}/js/jquery.validate.js"></script>
-<script src="${pageContext.request.contextPath}/js/messages_zh.js"></script>
-<script type="text/javascript">
-	$().ready(function() {
-		$("#addTrackingForm").validate({
-			rules : {
-				text : {
-					required : true,
-					minlength : 10,
-					maxlength : 255
-				}
-			}
-		});
-	});
-</script>
+<%@include file="customer_js_css.jsp"%>
+<script
+	src="${pageContext.request.contextPath}/js/validate_rules/customer_customerDetail.js"></script>
 <style type="text/css">
 body {
 	background-color: white;
@@ -35,34 +20,16 @@ div.customerDetail, div.tracking, div.trackingList {
 table.table {
 	width: 80%;
 }
-.text{
+
+.text {
 	font-size: 22px;
 	font-family: Microsoft YaHei;
 }
-
 </style>
 
 </head>
 <body>
-	<div class="header">
-		<div class="logo">
-			<img border="0"
-				src="${pageContext.request.contextPath}/style/img/logo.jpg" />
-		</div>
-		<div class="userName">
-			<font id="userName">欢迎你，${user.name}</font>
-		</div>
-		<div class="doSth">
-			<s:a action="userAction_logout.do">
-				<font id="login">注销</font>
-			</s:a>
-		</div>
-	</div>
-	<div class="func">
-		<s:a action="customerAction_saveCustomerUI">新增客户</s:a>
-		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-		<s:a action="customerAction_listCustomer">查看所有客户</s:a>
-	</div>
+	<%@include file="customer_header.jsp"%>
 
 	<div class="customerDetail">
 		<table class="table" border="1">
@@ -92,7 +59,7 @@ table.table {
 						format="yyyy-MM-dd HH:mm:ss"></s:date></td>
 			</tr>
 		</table>
-		<br> 
+		<br>
 
 	</div>
 	<div class="tracking">
@@ -116,16 +83,16 @@ table.table {
 
 	<br>
 	<div class="trackingList">
-		<table border="1" class="table">
+		<table border="0" class="table">
 			<s:iterator value="#trackingList">
 				<tr>
-					<td style="background-color: #FFF9C4">追踪时间：<s:date
+					<td style="background-color: #56c9ac">追踪时间：<s:date
 							name="trackingSaveDate" format="yyyy-MM-dd HH:mm:ss"></s:date> <s:a
 							action="trackingAction_deleteTracking?id=%{id}">删除</s:a>
 					</td>
 				</tr>
 				<tr style="height: 50px;">
-					<td style="background-color: #D1C4E9;">追踪反馈：${text}</td>
+					<td style="background-color: #DCEDC8;">追踪反馈：${text}</td>
 				</tr>
 			</s:iterator>
 		</table>

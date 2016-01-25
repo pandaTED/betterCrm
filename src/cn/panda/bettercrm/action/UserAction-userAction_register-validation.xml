@@ -3,40 +3,36 @@
         "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
 
 <validators>
-	
-	  <field name="loginName">
-    	<field-validator type="requiredstring">
-    		<param name="trim">true</param>
-    		<message>登录名不能为空！</message>
-    	</field-validator>
-    </field>
-    
-        <field name="password">
-    	<field-validator type="requiredstring">
-    		<param name="trim">true</param>
-    		<message>密码不能为空</message>
-    	</field-validator>
-    </field>
- 
-    <field name="name">
-    	<field-validator type="requiredstring">
-    		<param name="trim">true</param>
-    		<message>姓名不能为空！</message>
-    	</field-validator>
-    </field>
-    
-    <field name="email">
-    	<field-validator type="email">
-    		<message>不合法的电子邮件地址！</message>
-    	</field-validator>
-    	<field-validator type="requiredstring">
-    		<param name="trim">true</param>
-    		<message>邮箱地址不能为空！</message>
-    	</field-validator>
-    </field>
-    
 
-    
-   
-    
+	<field name="loginName">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>登录名不能为空！</message>
+		</field-validator>
+	</field>
+
+	<field name="password">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>密码不能为空</message>
+		</field-validator>
+	</field>
+
+	<field name="name">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>姓名不能为空！</message>
+		</field-validator>
+	</field>
+
+	<field name="email">
+		<field-validator type="email">
+			<message>不合法的电子邮件地址！</message>
+		</field-validator>
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>邮箱地址不能为空！</message>
+		</field-validator>
+	</field>
+
 </validators>
