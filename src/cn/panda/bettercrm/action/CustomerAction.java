@@ -111,6 +111,7 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 		Customer c = cd.find(customer.getId()); 
 		
 		c.setAge(customer.getAge());
+		c.setGender(customer.getGender());
 		c.setCellphone(customer.getCellphone());
 		c.setCompanyName(customer.getCompanyName());
 		c.setCompanyPhone(customer.getCompanyPhone());

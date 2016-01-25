@@ -9,6 +9,7 @@
 <script src="${pageContext.request.contextPath}/js/jquery-2.1.4.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery.validate.js"></script>
 <script src="${pageContext.request.contextPath}/js/messages_zh.js"></script>
+<script src="${pageContext.request.contextPath}/js/login_validateLoginName.js"></script>
  <script type="text/javascript">
 	$().ready(function() {
 		$("#loginForm").validate({
@@ -48,7 +49,8 @@
 	</div>
 	<div class="main">
 		<s:form id="loginForm" action="userAction_login">
-			<s:textfield name="loginName" cssClass="textInput">登录名：</s:textfield>
+			<s:textfield name="loginName" cssClass="textInput" onblur="hadLoginName(this.value)">登录名：</s:textfield>
+			 <span id = "loginNameNotExist" style="font-size: 10px;" ></span>
 			<font class="fieldError">${FieldErrors.loginName[0]}</font>
 			<br>
 			<s:textfield name="password" cssClass="textInput">密码：</s:textfield>

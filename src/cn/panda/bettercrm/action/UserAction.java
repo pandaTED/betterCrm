@@ -1,7 +1,13 @@
 package cn.panda.bettercrm.action;
 
-import javax.annotation.Resource;
+import java.io.IOException;
+import java.io.PrintWriter;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -17,7 +23,16 @@ import com.opensymphony.xwork2.ModelDriven;
 public class UserAction extends ActionSupport implements ModelDriven<User>{
 	
 	private User model;
-	
+	private String Lname;
+
+	public String getLname() {
+		return Lname;
+	}
+
+	public void setLname(String lname) {
+		Lname = lname;
+	}
+
 	@Override
 	public User getModel() {
 		if(model == null){
@@ -66,8 +81,15 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 			
 			return "register_fail";
 		}else{
-			ud.save(model);
-			return "register_success";
+			String LName = model.getLoginName().trim();
+			User user = ud.findByLName(LName);
+			if(user==null){
+				ud.save(model);
+				return "register_success";
+			}else{
+				System.out.println("登录名："+LName+"已存在，请更换！");
+				return "register_fail";
+			}
 		}
 	}
 	
@@ -76,16 +98,53 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 		return "loginUI";
 	}
 
+	HttpServletRequest  req = ServletActionContext.getRequest();
+	HttpServletResponse resp = ServletActionContext.getResponse();
 	
-	public void validateRegister() {
-		if(model.getLoginName() == null || model.getLoginName().trim().equals("")){
-			this.addFieldError("loginName", "登录名不能为空！");
+	
+	public String register_loginNameCheck() throws IOException{
+	
+		resp.setContentType("text/html;charset=utf-8");
+		PrintWriter writer = resp.getWriter();
+		String loginName = Lname.trim();
+		if(loginName == null || loginName.equals("")){
+			return null;
+		}else{
+			User user = ud.findByLName(loginName);
+			if(user == null){
+				writer.println("<font color='green'>当前用户名没人使用，可以注册</font>");
+			}else{
+				writer.println("<font color='red'>当前用户名已注册，请更换！</font>");
+			}
 		}
-		
+		writer.close();
+		return null;
 	}
 	
+	public String login_loginNameCheck() throws IOException{
+		System.out.println("login_loginNameCheck执行了！");
+		resp.setContentType("text/html;charset=utf-8");
+		PrintWriter writer = resp.getWriter();
+		String loginName = Lname.trim();
+		if(loginName == null || loginName.equals("")){
+			return null;
+		}else{
+			User user = ud.findByLName(loginName);
+			if(user == null){
+				writer.println("<font color='red'>用户名不存在</font>");
+			}else{
+				return null;
+			}
+		}
+		writer.close();
+		return null;
+	}
 	
-	
-	
+//	public void validateRegister() {
+//		if(model.getLoginName() == null || model.getLoginName().trim().equals("")){
+//			this.addFieldError("loginName", "登录名不能为空！");
+//		}
+//		
+//	}
 	
 }

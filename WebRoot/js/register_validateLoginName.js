@@ -7,7 +7,7 @@ var xmlhttp;
         	//1.创建XMLHttpRequest对象
             xmlhttp = new XMLHttpRequest();
             //2.XMLHttpRequest打开连接
-          	xmlhttp.open("GET","userRegister?loginName="+loginName,true);
+          	xmlhttp.open("GET","userAction_register_loginNameCheck.do?Lname="+loginName,true);
           	//3.设置回调函数
           	xmlhttp.onreadystatechange = callback;
           	//4.send

@@ -9,6 +9,7 @@
 <script src="${pageContext.request.contextPath}/js/jquery-2.1.4.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery.validate.js"></script>
 <script src="${pageContext.request.contextPath}/js/messages_zh.js"></script>
+<script src="${pageContext.request.contextPath}/js/register_validateLoginName.js"></script>
 <%-- <script src="${pageContext.request.contextPath}/js/jquery.metadata.js"></script> --%>
  <script type="text/javascript">
 	$().ready(function() {
@@ -53,7 +54,8 @@
 		<s:form id="registerForm" action="userAction_register">
 			<p>
 				<label for="loginName">登录名</label>
-				<s:textfield name="loginName" cssClass="textInput"/>
+				<s:textfield name="loginName" cssClass="textInput" onblur="hadLoginName(this.value)"/>
+				 <span id = "loginNameExist" style="font-size: 10px;" ></span>
 				 <font class="fieldError">${FieldErrors.loginName[0]}</font>
 			</p>
 			<p>

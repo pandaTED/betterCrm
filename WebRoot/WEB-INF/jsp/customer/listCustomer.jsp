@@ -47,7 +47,7 @@
   	
   	<div class="table">
   		<table id="customerTable" >
-  		<tr class="tr">
+  		<tr class="tr" style="background-color: #C8E6C9">
   			<td>序号</td>
   			<td>姓名</td>
   			<td>性別</td>

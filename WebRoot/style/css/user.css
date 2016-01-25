@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
 	body{
 			font-family:Microsoft YaHei;
-			background-color: #56c9ac;
+			background-color: #FFFFFF;
 		}
 	
 		div.header{
@@ -24,7 +24,7 @@
 		}
 		
 		#login{
-			color: white;
+			color: black;
 			font-size: 30px;	
 		}
 		
@@ -39,7 +39,7 @@
 			text-align: right;
 			margin-top: 20%;
 			font-size: 24px;
-			color: white;
+			color: black;
 		}
 		
 		#birthday{
@@ -69,13 +69,11 @@
     		margin: auto;
     		height: 30px;
     		font-size: 20px;
-    		background-color: #eaedf2;
+    		background-color: #C8E6C9;
     		}
-    		
     		#userName{
     		color: white;
     	}	
-    	
     	
     	font.fieldError{
  		font-size: 10px;
