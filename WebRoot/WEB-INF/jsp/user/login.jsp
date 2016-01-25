@@ -27,15 +27,12 @@
 	});
 </script> 
 <style type="text/css">
-	div.main {
-	width: 50%;
-	font-size: 20px;
-	text-align: center;
-	}
+
 </style>
 
 </head>
 <body>
+<div class="father">
 	<div class="header">
 		<div class="logo">
 			<img border="0"
@@ -48,16 +45,23 @@
 		</div>
 	</div>
 	<div class="main">
-		<s:form id="loginForm" action="userAction_login">
-			<s:textfield name="loginName" cssClass="textInput" onblur="hadLoginName(this.value)">登录名：</s:textfield>
+			<s:form id="loginForm" action="userAction_login">
+			<p>
+			<label for="loginName">登录名</label>
+			<s:textfield name="loginName" cssClass="textInput" onblur="hadLoginName(this.value)" />
 			 <span id = "loginNameNotExist" style="font-size: 10px;" ></span>
 			<font class="fieldError">${FieldErrors.loginName[0]}</font>
-			<br>
-			<s:textfield name="password" cssClass="textInput">密码：</s:textfield>
+			</p>
+			<p>
+			<label for="loginName">密&emsp;码</label>
+			<s:textfield name="password" cssClass="textInput" />
 			<font class="fieldError">${FieldErrors.password[0]}</font>
-			<br>
-			<s:submit id="submit" value="登录"></s:submit>
+			</p>
+			<p>
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<s:submit id="submit" value="登录"></s:submit>
+			</p>
 		</s:form>
+	</div>
 	</div>
 
 </body>

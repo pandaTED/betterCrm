@@ -7,6 +7,7 @@
 		div.header{
 		background-color: #56c9ac;
 		height: 45px;
+		min-width: 900px;
 		}
 		
 		div.logo{
@@ -32,15 +33,7 @@
 			text-decoration: none;
 		}
 		
-		div.main{
-			width:600px;
-			height:150px;
-			margin-left:30%;  
-			text-align: right;
-			margin-top: 20%;
-			font-size: 24px;
-			color: black;
-		}
+		
 		
 		#birthday{
 			width: 220Px;
@@ -50,9 +43,9 @@
 			font-size: 20px;
 		}
 		
-		#submit{
-			width: 60px;
-			height: 30px;
+		#submit,#reset{
+			height:30px;
+			width:60px;
 			font-family: Microsoft YaHei
 		}
 		
@@ -81,9 +74,22 @@
  		}
  		
  		input.textInput{
- 		width: 220Px;
+ 			width: 220Px;
 			height: 30px;
 			border-radius:5px;
 			font-family: Microsoft YaHei;
 			font-size: 20px;
  		}
+ 			div.father{
+		max-width: 100%;
+		min-width: 1200px;
+	
+	}
+	
+		div.main{
+		position: absolute;
+		top:40%;
+		left:40%;
+		font-size: 24px;
+		color: black;
+	}

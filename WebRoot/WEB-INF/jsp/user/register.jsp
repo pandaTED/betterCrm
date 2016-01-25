@@ -35,10 +35,14 @@
 		});
 	});
 </script>
+<style type="text/css">
+	
+</style>
 
 </head>
 
-<body>
+<body class="father">
+	<div>
 	<div class="header">
 		<div class="logo">
 			<img border="0"
@@ -53,32 +57,34 @@
 	<div class="main">
 		<s:form id="registerForm" action="userAction_register">
 			<p>
-				<label for="loginName">登录名</label>
+				<label for="loginName">登录名&emsp;</label>
 				<s:textfield name="loginName" cssClass="textInput" onblur="hadLoginName(this.value)"/>
 				 <span id = "loginNameExist" style="font-size: 10px;" ></span>
 				 <font class="fieldError">${FieldErrors.loginName[0]}</font>
-			</p>
+			 </p>
+			
 			<p>
-				<label for="password">密码</label>
+				<label for="password">密&emsp;码&emsp;</label>
 				<s:textfield name="password" cssClass="textInput"/>
 				 <font class="fieldError">${FieldErrors.password[0]}</font> 
 			</p>
 			<p>
-				<label for="name">用户名</label>
+				<label for="name">用户名&emsp;</label>
 				<s:textfield name="name"  cssClass="textInput"/>
 				 <font class="fieldError">${FieldErrors.name[0]}</font>
 			</p>
 			<p>
-				<label for="email">电子邮箱</label>
+				<label for="email">邮&emsp;箱&emsp;</label>
 				<s:textfield name="email"  cssClass="textInput"/>
 				<font class="fieldError">${FieldErrors.email[0]}</font>
 			</p>
+			
 			<p>
-				<s:submit id="submit" value="注册"></s:submit>
+				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<s:submit id="submit" value="注册"></s:submit>
 			</p>
 		</s:form>
 	</div>
-
+	</div>
 </body>
 </html>
 

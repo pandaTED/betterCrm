@@ -30,7 +30,7 @@
 	</div>
 	<div class="func">
   	<s:a action="customerAction_saveCustomerUI" >新增客户</s:a> 
-  	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
   	<s:a action="customerAction_listCustomer">查看所有客户</s:a>
   	</div>
   	<div class="saveTable">
