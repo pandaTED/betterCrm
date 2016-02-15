@@ -12,7 +12,7 @@
 
 		<interceptors>
 			<interceptor name="RequestEncoding"
-				class="cn.panda.bettercrm.interceptor.RequestEncoding"></interceptor>
+				class="cn.panda.interceptor.RequestEncoding"></interceptor>
 			<interceptor-stack name="myInterceptorStack">
 				<interceptor-ref name="RequestEncoding"></interceptor-ref>	<!-- 先配置request编码的拦截器 -->
 				<!-- <interceptor-ref name="HtmlInterceptor"></interceptor-ref> 再配置html代码转义的拦截器 -->

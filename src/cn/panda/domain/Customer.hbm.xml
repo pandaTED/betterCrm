@@ -3,9 +3,9 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="cn.panda.bettercrm.domain">
+<hibernate-mapping package="cn.panda.domain">
 
-	<class name="Customer" table="bettercrm_customer">
+	<class name="Customer" table="b_customer">
 		<id name="id">
 			<generator class="native" />
 		</id>
@@ -29,7 +29,7 @@
 			<key column="customerId"></key>
 			<one-to-many class="Tracking"></one-to-many>
 		</set>
-
+		
 	</class>
 
 </hibernate-mapping>

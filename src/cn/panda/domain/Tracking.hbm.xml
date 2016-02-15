@@ -3,9 +3,9 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="cn.panda.bettercrm.domain">
+<hibernate-mapping package="cn.panda.domain">
 
-	<class name="Tracking" table="bettercrm_tracking">
+	<class name="Tracking" table="b_tracking">
 		<id name="id">
 			<generator class="native" />
 		</id>

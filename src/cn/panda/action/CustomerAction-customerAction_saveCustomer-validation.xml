@@ -25,7 +25,7 @@
 
 	<field name="birthday">
 		<field-validator type="date">
-			<param name="min">1990-1-1</param>
+			<param name="min">1900-1-1</param>
 			<param name="max">2017-1-1</param>
 			<message>不合法的生日范围</message>
 		</field-validator>

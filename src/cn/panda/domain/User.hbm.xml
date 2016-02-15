@@ -3,9 +3,9 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="cn.panda.bettercrm.domain">
+<hibernate-mapping package="cn.panda.domain">
 
-	<class name="User" table="bettercrm_user">
+	<class name="User" table="b_user">
 		<id name="id">
 			<generator class="native" />
 		</id>
