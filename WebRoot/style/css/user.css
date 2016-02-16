@@ -6,6 +6,7 @@ body {
 }
 
 div.header {
+	overflow: auto;
 	background-color: #56c9ac;
 	height: 45px;
 	min-width: 900px;
@@ -13,18 +14,22 @@ div.header {
 
 div.logo {
 	float: left;
-	margin-left: 0.5%;
-	margin-top: 0.2%;
+	width: 200px;
 }
 
 div.doSth {
-	float: right;
-	text-align: center;
-	height: 100%;
+	float:right;
 	width: 100px;
+	height: 100%;
+	text-align: center;
 	background-color: #e3502f;
 }
-
+div.userName {
+	float:left;
+	line-height: 45px;
+	font-size: 20px;
+	width: 150px;
+}
 #login {
 	color: black;
 	font-size: 30px;
@@ -48,13 +53,7 @@ a:link {
 	font-family: Microsoft YaHei
 }
 
-div.userName {
-	float: left;
-	margin-left: 75%;
-	font-size: 20px;
-	width: 150px;
-	line-height: 45px;
-}
+
 
 div.func {
 	text-align: center;

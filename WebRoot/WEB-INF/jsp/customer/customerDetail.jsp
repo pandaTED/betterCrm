@@ -18,9 +18,16 @@ div.customerDetail, div.tracking, div.trackingList {
 }
 
 table.table {
+
+	border:1px;
 	width: 80%;
 }
-
+table.table td{
+	border-width: 1px;
+}
+table.table tr{
+	border-width: 1px;
+}
 .text {
 	font-size: 22px;
 	font-family: Microsoft YaHei;
@@ -32,11 +39,30 @@ table.table {
 	<%@include file="customer_header.jsp"%>
 
 	<div class="customerDetail">
-		<table class="table" border="1">
-			<th colspan="2">姓名/&emsp;${name}&emsp;
-				状态/&emsp;${status}&emsp;客户性別/&emsp;${gender==1?"男":"女"}&emsp;客户年龄/&emsp;${age}&emsp;
-				生日/<s:date name="birthday" format="yyyy-MM-dd"></s:date>
+		<table class="table"  border="1">
+			<th colspan="2">
+			客户详情
 			</th>
+			<tr>
+				<td>姓名</td>
+				<td>${name}</td>
+			</tr>
+			<tr>
+				<td>状态</td>
+				<td>${status}</td>
+			</tr>
+			<tr>
+				<td>性别</td>
+				<td>${gender==1?"男":"女"}</td>
+			</tr>
+			<tr>
+				<td>年龄</td>
+				<td>${age}</td>
+			</tr>
+			<tr>
+				<td>生日</td>
+				<td><s:date name="birthday" format="yyyy-MM-dd"></s:date></td>
+			</tr>
 			<tr>
 				<td>公司</td>
 				<td>${companyName}</td>
@@ -64,9 +90,9 @@ table.table {
 	</div>
 	<div class="tracking">
 		<s:form id="addTrackingForm" action="trackingAction_addTracking">
-			<table class="table" border="1">
+			<table class="table" >
 				<tr>
-					<td>跟踪信息</td>
+					<td>拜访信息</td>
 				</tr>
 				<td><s:textarea rows="5" cols="50" name="text" cssClass="text"></s:textarea>
 				</td>
@@ -86,13 +112,13 @@ table.table {
 		<table border="0" class="table">
 			<s:iterator value="#trackingList">
 				<tr>
-					<td style="background-color: #56c9ac">追踪时间：<s:date
-							name="trackingSaveDate" format="yyyy-MM-dd HH:mm:ss"></s:date> <s:a
-							action="trackingAction_deleteTracking?id=%{id}">删除</s:a>
+					<td style="background-color: #56c9ac">录入时间：<s:date
+							name="trackingSaveDate" format="yyyy-MM-dd HH:mm:ss"></s:date> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+							<s:a action="trackingAction_deleteTracking?id=%{id}">删除</s:a>
 					</td>
 				</tr>
 				<tr style="height: 50px;">
-					<td style="background-color: #DCEDC8;">追踪反馈：${text}</td>
+					<td style="background-color: #DCEDC8;">反馈：${text}</td>
 				</tr>
 			</s:iterator>
 		</table>

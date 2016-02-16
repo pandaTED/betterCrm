@@ -13,7 +13,6 @@
 </head>
 
 <body class="father">
-	<div>
 		<div class="header">
 			<div class="logo">
 				<img border="0"
@@ -57,7 +56,6 @@
 				</p>
 			</s:form>
 		</div>
-	</div>
 </body>
 </html>
 
